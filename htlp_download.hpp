@@ -8,6 +8,10 @@
 #ifndef HTLP_DOWNLOAD_HPP
 #define	HTLP_DOWNLOAD_HPP
 
+class HTLP_Download {
+private:
+    
+};
 
 
 #endif	/* HTLP_DOWNLOAD_HPP */

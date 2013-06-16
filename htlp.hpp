@@ -16,11 +16,11 @@
 
 class HTPL {
 private:
-    std::string option;
-    std::string name_package;
+    char * option;
+    char * name_package;
     
 public:
-    HTPL(std::string option);
+    HTPL(char * option);
     int validateOption();
     
     
