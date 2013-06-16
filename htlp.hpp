@@ -14,13 +14,13 @@
 #include <sstream>
 #include <bzlib.h>
 
-class HTPL {
+class HTLP {
 private:
     char * option;
     char * name_package;
     
 public:
-    HTPL(char * option);
+    HTLP(char * option);
     int validateOption();
     
     

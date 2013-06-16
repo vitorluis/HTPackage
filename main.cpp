@@ -14,7 +14,8 @@
  * 
  */
 int main(int argc, char** argv) {
-    
+    HTLP * htlp;
+    htlp = new HTLP(argv[1]);
     return 0;
 }
 
