@@ -1,9 +1,26 @@
-/* 
- * File:   htlp.hpp
- * Author: vitor
- *
- * Created on June 15, 2013, 9:06 PM
+/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
+/*
+ * htlp.hpp
+ * Copyright (C) 2013 Vitor Luis V. Neto <vitor@softwaredevelopment.com.br>
+ * 
+ * VBackup is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * VBackup is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "htlp_install.hpp"
+
+bool HTLP_Install::resolvDependencies() {
+    return true;
+}
 
 #ifndef HTLP_HPP
 #define	HTLP_HPP
