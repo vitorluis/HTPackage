@@ -13,6 +13,8 @@ private:
     char * package;
 public:
     bool resolvDependencies();
+    bool downloadPackages();
+    bool installPackages();
 };
 
 
