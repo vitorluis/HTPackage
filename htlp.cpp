@@ -20,3 +20,7 @@ void HTLP::showVersion() {
 bool HTLP::installPackage(char* package) {
     return true;
 }
+
+bool HTLP::localInstallPackage(char* filename) {
+    return true;
+}
