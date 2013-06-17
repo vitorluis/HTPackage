@@ -13,7 +13,8 @@
 #include <fstream>
 #include <sstream>
 #include <map>
-#include <bzlib.h>
+#include "htlp_database.hpp"
+#include "htlp_install.hpp"
 
 class HTLP {
 private:
