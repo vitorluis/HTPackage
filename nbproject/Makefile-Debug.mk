@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/htlp.o \
+	${OBJECTDIR}/htlp_install.o \
 	${OBJECTDIR}/main.o
 
 
@@ -67,6 +68,11 @@ ${OBJECTDIR}/htlp.o: htlp.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp.o htlp.cpp
+
+${OBJECTDIR}/htlp_install.o: htlp_install.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_install.o htlp_install.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

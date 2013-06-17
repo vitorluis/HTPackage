@@ -9,7 +9,10 @@
 #define	HTLP_INSTALL_HPP
 
 class HTLP_Install {
-    
+private:
+    char * package;
+public:
+    bool resolvDependencies();
 };
 
 
