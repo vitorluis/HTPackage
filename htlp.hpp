@@ -12,6 +12,7 @@
 #include <cstring>
 #include <fstream>
 #include <sstream>
+#include <map>
 #include <bzlib.h>
 
 class HTLP {
@@ -20,10 +21,14 @@ private:
     char * name_package;
     
 public:
-    HTLP(char * option);
+    HTLP(char ** args);
     int validateOption();
-    
-    
+    void showVersion();
+    bool installPackage(char * package);    
+    bool updatePackage(char * package);
+    bool localInstallPackage(char * filename);
+    bool upgradeAllPackages();
+    std::map<int,char*> searchPackage(char * package);
 };
 
 
