@@ -42,6 +42,9 @@ public:
     bool localInstallPackage(char * filename);
     bool upgradeAllPackages();
     std::map<int,char*> searchPackage(char * package);
+    bool checkUpdate();
+    bool removePackage();
+    void showHelp();
 };
 
 
