@@ -16,11 +16,6 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "htlp_install.hpp"
-
-bool HTLP_Install::resolvDependencies() {
-    return true;
-}
 
 #ifndef HTLP_HPP
 #define	HTLP_HPP

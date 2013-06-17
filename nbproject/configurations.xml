@@ -7,6 +7,7 @@
       <itemPath>htlp.hpp</itemPath>
       <itemPath>htlp_database.hpp</itemPath>
       <itemPath>htlp_decompress.hpp</itemPath>
+      <itemPath>htlp_defines.hpp</itemPath>
       <itemPath>htlp_download.hpp</itemPath>
       <itemPath>htlp_install.hpp</itemPath>
     </logicalFolder>
@@ -60,6 +61,8 @@
       </item>
       <item path="htlp_decompress.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="htlp_defines.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="htlp_download.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="htlp_install.cpp" ex="false" tool="1" flavor2="0">
@@ -99,6 +102,8 @@
       <item path="htlp_database.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="htlp_decompress.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="htlp_defines.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="htlp_download.hpp" ex="false" tool="3" flavor2="0">
       </item>
