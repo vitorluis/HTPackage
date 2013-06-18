@@ -21,7 +21,10 @@
 #define	HTLP_DATABASE_HPP
 
 class HTLP_Database {
-    
+private:
+    char * _database_name;
+    char * _database_user;
+    char * _database_passwd;
 };
 
 
