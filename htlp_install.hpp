@@ -20,15 +20,33 @@
 #ifndef HTLP_INSTALL_HPP
 #define	HTLP_INSTALL_HPP
 
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <fstream>
+#include <sstream>
+#include <map>
+#include "htlp_defines.hpp"
+#include "htlp_database.hpp"
+#include "htlp_download.hpp"
+#include "htlp_decompress.hpp"
+
+
+
 class HTLP_Install {
 private:
     char * package;
+    HTLP_Download * downloader;
+    HTLP_Database * packages_database;
+    HTLP_Decompress * decompress_package;
+    
 public:
     HTLP_Install(char * package);
     bool searchPackage();
     bool resolvDependencies();
     bool downloadPackages();
     bool installPackages();
+    void freeMemory();
 };
 
 
