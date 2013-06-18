@@ -25,6 +25,9 @@ private:
     char * _database_name;
     char * _database_user;
     char * _database_passwd;
+    int openConnection();
+public:
+    int executeQuery();
 };
 
 
