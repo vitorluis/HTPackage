@@ -21,11 +21,12 @@
 #include <cstdio>
 #include <cstring>
 #include "htlp.hpp"
-
+#include "htlp_defines.hpp"
 /*
  * 
  */
 int main(int argc, char** argv) {
+    printf("Cache: %s\n", CACHE_PATH);
     HTLP * htlp;
     htlp = new HTLP(argv);
     return 0;

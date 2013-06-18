@@ -20,10 +20,52 @@
 #ifndef HTLP_DEFINES_HPP
 #define	HTLP_DEFINES_HPP
 
-//Definições dos erros
+/*
+ * Definições de erros
+ */
 
-#define ERROR_CODE_GENERAL -1
+//Erro geral
+#define ERROR_GENERAL_CODE -1
 
+//Erros em relação aos pacotes
+#define ERROR_PACKAGE_NOT_FOUND 100
+#define ERROR_BROKEN_DEPENDENCIES 101
+
+//Erros em relação a conexão com a internet
+#define ERROR_NOT_CONNECTED 102
+#define ERROR_HTTP_404 103
+#define ERROR_UNABLE_TO_RESOLVE_DNS 104
+
+//Erros em relação ao database
+#define ERROR_DATABASE_NOT_FOUND 105
+#define ERROR_COULD_NOT_OPEN_DATABASE 106
+#define ERROR_DRIVER_NOT_FOUND 107
+#define ERROR_BROKEN_DATABASE 108
+
+//Erro em relação aos arquivos
+#define ERROR_FILE_NOT_FOUND 109
+#define ERROR_UNABLE_TO_DECOMPRESS 110
+#define ERROR_UNABLE_TO_COMPRESS 111
+
+/*
+ * Definições de paths
+ */
+
+#define HOME_PATH "/var/htpackage/"
+#define DATABASE_PATH "/var/htpackage/data/"
+#define CACHE_PATH "/var/cache/htpackage/"
+#define LOG_PATH "/var/log/htpackage/"
+#define CONF_FILES_PATH "/etc/htpackage/"
+#define BIN_PATH "/usr/bin/"
+
+/*
+ * Definições do Banco de Dados
+ */
+
+#define DATABASE_FILENAME "Packages.db"
+#define DATABASE_NAME "packages"
+#define DATABASE_USER "htpackage"
+#define DATABASE_PASSWD "htlinux2013"
 
 #endif	/* HTLP_DEFINES_HPP */
 
