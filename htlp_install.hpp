@@ -35,10 +35,10 @@
 
 class HTLP_Install {
 private:
-    char * package;
-    HTLP_Download * downloader;
-    HTLP_Database * packages_database;
-    HTLP_Decompress * decompress_package;
+    char * _package;
+    HTLP_Download * _downloader;
+    HTLP_Database * _packages_database;
+    HTLP_Decompress * _decompress_package;
     
 public:
     HTLP_Install(char * package);

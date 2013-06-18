@@ -36,6 +36,7 @@ void HTLP::showVersion() {
 }
 
 bool HTLP::installPackage(char* package) {
+    this->_install_packages = new HTLP_Install(package);
     return true;
 }
 

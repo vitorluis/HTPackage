@@ -32,6 +32,7 @@ class HTLP {
 private:
     char * option;
     char * name_package;
+    HTLP_Install * _install_packages;
     
 public:
     HTLP(char ** args);
