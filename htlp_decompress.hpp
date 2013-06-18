@@ -21,6 +21,9 @@
 #define	HTLP_DECOMPRESS_PACKAGE_HPP
 #include <boost/iostreams/filter/bzip2.hpp>
 
+class HTLP_Decompress {
+    
+};
 
 
 #endif	/* HTLP_DECOMPRESS_PACKAGE_HPP */
