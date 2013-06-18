@@ -24,6 +24,8 @@ class HTLP_Install {
 private:
     char * package;
 public:
+    HTLP_Install(char * package);
+    bool searchPackage();
     bool resolvDependencies();
     bool downloadPackages();
     bool installPackages();
