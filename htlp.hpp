@@ -27,6 +27,7 @@
 #include <map>
 #include "htlp_database.hpp"
 #include "htlp_install.hpp"
+#include "htlp_download.hpp"
 
 class HTLP {
 private:

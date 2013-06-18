@@ -30,6 +30,8 @@
 #include <curl/easy.h>
 #include "htlp_defines.hpp"
 
+size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream);
+
 class HTLP_Download {
 private:
     char * _package;
@@ -38,9 +40,9 @@ private:
     CURL * _downloader;
     CURLcode _res;
     FILE * _stream_file;
-    size_t writeData(void *ptr, size_t size, size_t nmemb, FILE *stream);
 public:
-    void setUrl(char * url);
+    HTLP_Download(const char * url,const char *package);
+    void setUrl(const char * url);
     void setUrlList(std::vector<char*> list);
     int downloadPackage();
     int downloadPackageList();

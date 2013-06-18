@@ -19,7 +19,18 @@
 
 #include "htlp_download.hpp"
 
-void HTLP_Download::setUrl(char* url) {
+size_t write_data(void* ptr, size_t size, size_t nmemb, FILE* stream) {
+    size_t written = fwrite(ptr, size, nmemb, stream);
+    return written;
+}
+
+HTLP_Download::HTLP_Download(const char* url, const char* package) {
+    //Inicia as vars
+    this->_url = (char*) url;
+    this->_package = (char*) package;
+}
+
+void HTLP_Download::setUrl(const char* url) {
     //Seta a URL no atributo da classe
     strcpy(this->_url, url);
     return;
@@ -30,23 +41,23 @@ void HTLP_Download::setUrlList(std::vector<char*> list) {
     return;
 }
 
-size_t HTLP_Download::writeData(void* ptr, size_t size, size_t nmemb, FILE* stream) {
-    size_t written = fwrite(ptr, size, nmemb, stream);
-    return written;
-}
-
 int HTLP_Download::downloadPackage() {
+    //Inicia o ponteiro de cURL
     this->_downloader = curl_easy_init();
+
     if (this->_downloader) {
-        strcat(this->_package, CACHE_PATH);
-        this->_stream_file = fopen(this->_package, "wb");
+        char * output_filename = new char[300];
+        sprintf(output_filename, "%s%s", CACHE_PATH, this->_package);
+        printf("OutPut File: %s\n", output_filename);
+        this->_stream_file = fopen(output_filename, "wb");
         curl_easy_setopt(this->_downloader, CURLOPT_URL, this->_url);
-        curl_easy_setopt(this->_downloader, CURLOPT_WRITEFUNCTION, &HTLP_Download::writeData);
+        curl_easy_setopt(this->_downloader, CURLOPT_WRITEFUNCTION, write_data);
         curl_easy_setopt(this->_downloader, CURLOPT_WRITEDATA, this->_stream_file);
         this->_res = curl_easy_perform(this->_downloader);
-        
+
         //Limpa o ponteiro do cURL
         curl_easy_cleanup(this->_downloader);
         fclose(this->_stream_file);
+        delete(output_filename);
     }
 }
