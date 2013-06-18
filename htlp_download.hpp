@@ -28,6 +28,7 @@
 #include <cctype>
 #include <curl/curl.h>
 #include <curl/easy.h>
+#include "htlp_defines.hpp"
 
 class HTLP_Download {
 private:

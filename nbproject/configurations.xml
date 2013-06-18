@@ -21,6 +21,7 @@
                    projectFiles="true">
       <itemPath>htlp.cpp</itemPath>
       <itemPath>htlp_database.cpp</itemPath>
+      <itemPath>htlp_download.cpp</itemPath>
       <itemPath>htlp_install.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -63,6 +64,8 @@
       <item path="htlp_decompress.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="htlp_defines.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="htlp_download.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="htlp_download.hpp" ex="false" tool="3" flavor2="0">
       </item>
@@ -107,6 +110,8 @@
       <item path="htlp_decompress.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="htlp_defines.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="htlp_download.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="htlp_download.hpp" ex="false" tool="3" flavor2="0">
       </item>
