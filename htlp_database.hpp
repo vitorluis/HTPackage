@@ -20,6 +20,9 @@
 #ifndef HTLP_DATABASE_HPP
 #define	HTLP_DATABASE_HPP
 
+class HTLP_Database {
+    
+};
 
 
 #endif	/* HTLP_DATABASE_HPP */
