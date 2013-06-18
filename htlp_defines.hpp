@@ -67,5 +67,11 @@
 #define DATABASE_USER "htpackage"
 #define DATABASE_PASSWD "htlinux2013"
 
+/*
+ * Definições do cURL
+ */
+
+#define DOWNLOAD_SUCCESSFULL 112
+
 #endif	/* HTLP_DEFINES_HPP */
 
