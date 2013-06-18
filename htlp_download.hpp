@@ -32,11 +32,13 @@
 
 class HTLP_Download {
 private:
+    char * _package;
     char * _url;
     std::vector<char*> _url_list;
     CURL * _downloader;
     CURLcode _res;
-    size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream);
+    FILE * _stream_file;
+    size_t writeData(void *ptr, size_t size, size_t nmemb, FILE *stream);
 public:
     void setUrl(char * url);
     void setUrlList(std::vector<char*> list);

@@ -21,6 +21,32 @@
 
 void HTLP_Download::setUrl(char* url) {
     //Seta a URL no atributo da classe
-    strcpy(this->_url,url);
+    strcpy(this->_url, url);
     return;
+}
+
+void HTLP_Download::setUrlList(std::vector<char*> list) {
+    this->_url_list = list;
+    return;
+}
+
+size_t HTLP_Download::writeData(void* ptr, size_t size, size_t nmemb, FILE* stream) {
+    size_t written = fwrite(ptr, size, nmemb, stream);
+    return written;
+}
+
+int HTLP_Download::downloadPackage() {
+    this->_downloader = curl_easy_init();
+    if (this->_downloader) {
+        strcat(this->_package, CACHE_PATH);
+        this->_stream_file = fopen(this->_package, "wb");
+        curl_easy_setopt(this->_downloader, CURLOPT_URL, this->_url);
+        curl_easy_setopt(this->_downloader, CURLOPT_WRITEFUNCTION, &HTLP_Download::writeData);
+        curl_easy_setopt(this->_downloader, CURLOPT_WRITEDATA, this->_stream_file);
+        this->_res = curl_easy_perform(this->_downloader);
+        
+        //Limpa o ponteiro do cURL
+        curl_easy_cleanup(this->_downloader);
+        fclose(this->_stream_file);
+    }
 }
