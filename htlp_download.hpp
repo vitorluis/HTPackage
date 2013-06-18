@@ -20,9 +20,27 @@
 #ifndef HTLP_DOWNLOAD_HPP
 #define	HTLP_DOWNLOAD_HPP
 
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <fstream>
+#include <vector>
+#include <cctype>
+#include <curl/curl.h>
+#include <curl/easy.h>
+
 class HTLP_Download {
 private:
-    
+    char * _url;
+    std::vector<char*> _url_list;
+    CURL * _downloader;
+    CURLcode _res;
+    size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream);
+public:
+    void setUrl(char * url);
+    void setUrlList(std::vector<char*> list);
+    int downloadPackage();
+    int downloadPackageList();
 };
 
 
