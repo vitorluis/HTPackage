@@ -44,8 +44,9 @@
 
 //Erro em relação aos arquivos
 #define ERROR_FILE_NOT_FOUND 109
-#define ERROR_UNABLE_TO_DECOMPRESS 110
-#define ERROR_UNABLE_TO_COMPRESS 111
+#define ERROR_PERMISSION_DENIED 110
+#define ERROR_UNABLE_TO_DECOMPRESS 111
+#define ERROR_UNABLE_TO_COMPRESS 112
 
 /*
  * Definições de paths
@@ -71,7 +72,7 @@
  * Definições do cURL
  */
 
-#define DOWNLOAD_SUCCESSFULL 112
+#define DOWNLOAD_SUCCESSFULL 113
 
 #endif	/* HTLP_DEFINES_HPP */
 
