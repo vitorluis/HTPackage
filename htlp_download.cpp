@@ -48,7 +48,6 @@ int HTLP_Download::downloadPackage() {
     if (this->_downloader) {
         char * output_filename = new char[300];
         sprintf(output_filename, "%s%s", CACHE_PATH, this->_package);
-        printf("OutPut File: %s\n", output_filename);
         this->_stream_file = fopen(output_filename, "wb");
         curl_easy_setopt(this->_downloader, CURLOPT_URL, this->_url);
         curl_easy_setopt(this->_downloader, CURLOPT_WRITEFUNCTION, write_data);
