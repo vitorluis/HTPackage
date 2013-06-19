@@ -43,7 +43,7 @@ private:
     CURLcode _res;
     FILE * _stream_file;
 public:
-    HTLP_Download(const char * url,const char *package);
+    HTLP_Download(const char * url, const char *package);
     void setUrl(const char * url);
     void setUrlList(std::vector<char*> list);
     int downloadPackage();

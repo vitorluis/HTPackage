@@ -22,7 +22,6 @@
 #include <boost/iostreams/filter/bzip2.hpp>
 
 class HTLP_Decompress {
-    
 };
 
 

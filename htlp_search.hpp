@@ -22,7 +22,6 @@
 
 #include "htlp_database.hpp"
 
-
 class HTLP_Search {
 private:
     char * _search;

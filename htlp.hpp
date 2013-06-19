@@ -34,16 +34,16 @@ private:
     char * option;
     char * name_package;
     HTLP_Install * _install_packages;
-    
+
 public:
     HTLP(char ** args);
     int validateOption();
     void showVersion();
-    bool installPackage(char * package);    
+    bool installPackage(char * package);
     bool updatePackage(char * package);
     bool localInstallPackage(char * filename);
     bool upgradeAllPackages();
-    std::map<int,char*> searchPackage(char * package);
+    std::map<int, char*> searchPackage(char * package);
     bool checkUpdate();
     bool removePackage();
     void showHelp();

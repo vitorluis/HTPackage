@@ -48,7 +48,7 @@ int HTLP_Download::downloadPackage() {
     //Filename final
     char * output_filename = new char[300];
     sprintf(output_filename, "%s%s", CACHE_PATH, this->_package);
-    
+
     if (this->_downloader) {
         this->_stream_file = fopen(output_filename, "wb");
         curl_easy_setopt(this->_downloader, CURLOPT_URL, this->_url);
@@ -62,7 +62,7 @@ int HTLP_Download::downloadPackage() {
         delete(output_filename);
     }
 
-    if (access(output_filename,F_OK) == -1) {
+    if (access(output_filename, F_OK) == -1) {
         return ERROR_DOWNLOAD_FAILED;
     } else {
         return DOWNLOAD_SUCCESSFULL;

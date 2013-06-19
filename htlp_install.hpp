@@ -31,15 +31,13 @@
 #include "htlp_download.hpp"
 #include "htlp_decompress.hpp"
 
-
-
 class HTLP_Install {
 private:
     char * _package;
     HTLP_Download * _downloader;
     HTLP_Database * _packages_database;
     HTLP_Decompress * _decompress_package;
-    
+
 public:
     HTLP_Install(char * package);
     bool searchPackage();

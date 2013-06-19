@@ -19,8 +19,8 @@
 #include "htlp_install.hpp"
 
 HTLP_Install::HTLP_Install(char* package) {
-   //Copia para o atributo o package a ser instalado
-    strcpy(this->_package,package);
+    //Copia para o atributo o package a ser instalado
+    strcpy(this->_package, package);
 }
 
 bool HTLP_Install::searchPackage() {
