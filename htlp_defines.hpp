@@ -34,6 +34,7 @@
 //Erros em relação a conexão com a internet
 #define ERROR_NOT_CONNECTED 102
 #define ERROR_HTTP_404 103
+#define ERROR_DOWNLOAD_FAILED 114
 #define ERROR_UNABLE_TO_RESOLVE_DNS 104
 
 //Erros em relação ao database

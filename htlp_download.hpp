@@ -28,6 +28,8 @@
 #include <cctype>
 #include <curl/curl.h>
 #include <curl/easy.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include "htlp_defines.hpp"
 
 size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream);

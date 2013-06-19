@@ -45,9 +45,11 @@ int HTLP_Download::downloadPackage() {
     //Inicia o ponteiro de cURL
     this->_downloader = curl_easy_init();
 
+    //Filename final
+    char * output_filename = new char[300];
+    sprintf(output_filename, "%s%s", CACHE_PATH, this->_package);
+    
     if (this->_downloader) {
-        char * output_filename = new char[300];
-        sprintf(output_filename, "%s%s", CACHE_PATH, this->_package);
         this->_stream_file = fopen(output_filename, "wb");
         curl_easy_setopt(this->_downloader, CURLOPT_URL, this->_url);
         curl_easy_setopt(this->_downloader, CURLOPT_WRITEFUNCTION, write_data);
@@ -58,5 +60,11 @@ int HTLP_Download::downloadPackage() {
         curl_easy_cleanup(this->_downloader);
         fclose(this->_stream_file);
         delete(output_filename);
+    }
+
+    if (access(output_filename,F_OK) == -1) {
+        return ERROR_DOWNLOAD_FAILED;
+    } else {
+        return DOWNLOAD_SUCCESSFULL;
     }
 }
