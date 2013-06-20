@@ -19,12 +19,17 @@
 
 #ifndef HTLP_DATABASE_H
 #define	HTLP_DATABASE_H
+#include <sqlite3.h>
 
 struct data_connection {
     char * _database_name;
     char * _database_user;
     char * _database_passwd;
     int port;
+};
+
+struct database {
+    
 };
 
 int openConnection(struct data_connection * data);

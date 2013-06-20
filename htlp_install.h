@@ -28,7 +28,11 @@
 #include "htlp_download.h"
 #include "htlp_decompress.h"
 
-char * _package;
+struct package {
+    char * _name_package;
+    char * _url_package;
+    int _package_size;
+};
 
 int htlp_install_searchPackage();
 int htlp_install_resolvDependencies();
