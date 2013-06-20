@@ -18,15 +18,10 @@
  */
 #include "htlp_install.h"
 
-HTLP_Install::HTLP_Install(char* package) {
-    //Copia para o atributo o package a ser instalado
-    strcpy(this->_package, package);
+int searchPackage() {
+    return 0;
 }
 
-bool HTLP_Install::searchPackage() {
-    return true;
-}
-
-bool HTLP_Install::resolvDependencies() {
-    return true;
+int resolvDependencies() {
+    return 0;
 }

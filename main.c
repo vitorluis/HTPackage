@@ -27,9 +27,7 @@
  * 
  */
 int main(int argc, char** argv) {
-    HTLP_Download * htlp;
-    htlp = new HTLP_Download("http://www.fastway.com.br/fastdialer-d/g729bin.tar.gz", "g729bin.tar.gz");
-    htlp->downloadPackage();
+
     return 0;
 }
 

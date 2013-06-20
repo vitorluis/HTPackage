@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
- * htlp_decompress.hpp
+ * htlp_decompress.h
  * Copyright (C) 2013 Vitor Luis V. Neto <vitor@softwaredevelopment.com.br>
  * 
  * HTPackage is free software: you can redistribute it and/or modify it
@@ -17,12 +17,8 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef HTLP_DECOMPRESS_PACKAGE_HPP
-#define	HTLP_DECOMPRESS_PACKAGE_HPP
-#include <boost/iostreams/filter/bzip2.hpp>
-
-class HTLP_Decompress {
-};
+#ifndef HTLP_DECOMPRESS_PACKAGE_H
+#define	HTLP_DECOMPRESS_PACKAGE_H
 
 
 #endif	/* HTLP_DECOMPRESS_PACKAGE_HPP */
