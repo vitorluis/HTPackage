@@ -24,15 +24,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "htlp_defines.h"
+#include "htlp_structs.h"
 #include "htlp_database.h"
 #include "htlp_download.h"
 #include "htlp_decompress.h"
 
-struct package {
-    char * _name_package;
-    char * _url_package;
-    int _package_size;
-};
 
 int htlp_install_searchPackage();
 int htlp_install_resolvDependencies();

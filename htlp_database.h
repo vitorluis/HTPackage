@@ -32,8 +32,8 @@ struct database {
     sqlite3 * _conn;
 };
 
-int openConnection(struct data_connection * data);
-int executeQuery(char * sql);
+int openConnection(struct data_connection data, struct database * db);
+int executeQuery(char * sql, struct database * db);
 
 #endif	/* HTLP_DATABASE_H */
 

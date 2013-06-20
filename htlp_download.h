@@ -29,24 +29,18 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "htlp_defines.h"
+#include "htlp_structs.h"
 
 size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream);
 
-class HTLP_Download {
-private:
-    char * _package;
-    char * _url;
-    char ** _url_list;
-    CURL * _downloader;
-    CURLcode _res;
-    FILE * _stream_file;
-public:
-    HTLP_Download(const char * url, const char *package);
-    void setUrl(const char * url);
-    void setUrlList(char** list);
-    int downloadPackage();
-    int downloadPackageList();
-};
+char * _package;
+char * _url;
+char ** _url_list;
+CURL * _downloader;
+CURLcode _res;
+FILE * _stream_file;
+int downloadPackage(struct package * package);
+int downloadPackageList();
 
 
 #endif	/* HTLP_DOWNLOAD_HPP */
