@@ -40,7 +40,7 @@ CURL * _downloader;
 CURLcode _res;
 FILE * _stream_file;
 int downloadPackage(struct package * package);
-int downloadPackageList();
+int downloadPackageList(struct package packages[]);
 
 
 #endif	/* HTLP_DOWNLOAD_HPP */
