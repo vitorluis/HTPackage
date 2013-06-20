@@ -66,30 +66,30 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/htpackage: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/htpackage ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/htlp.o: htlp.cpp 
+${OBJECTDIR}/htlp.o: htlp.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp.o htlp.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp.o htlp.c
 
-${OBJECTDIR}/htlp_database.o: htlp_database.cpp 
+${OBJECTDIR}/htlp_database.o: htlp_database.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_database.o htlp_database.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_database.o htlp_database.c
 
-${OBJECTDIR}/htlp_download.o: htlp_download.cpp 
+${OBJECTDIR}/htlp_download.o: htlp_download.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_download.o htlp_download.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_download.o htlp_download.c
 
-${OBJECTDIR}/htlp_install.o: htlp_install.cpp 
+${OBJECTDIR}/htlp_install.o: htlp_install.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_install.o htlp_install.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_install.o htlp_install.c
 
-${OBJECTDIR}/main.o: main.cpp 
+${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
 
 # Subprojects
 .build-subprojects:

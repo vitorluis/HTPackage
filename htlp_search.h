@@ -20,7 +20,7 @@
 #ifndef HTLP_SEARCH_HPP
 #define	HTLP_SEARCH_HPP
 
-#include "htlp_database.hpp"
+#include "htlp_database.h"
 
 class HTLP_Search {
 private:

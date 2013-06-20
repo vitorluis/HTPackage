@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "htlp_install.hpp"
+#include "htlp_install.h"
 
 HTLP_Install::HTLP_Install(char* package) {
     //Copia para o atributo o package a ser instalado

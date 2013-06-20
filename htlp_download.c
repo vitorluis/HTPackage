@@ -17,7 +17,7 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "htlp_download.hpp"
+#include "htlp_download.h"
 
 size_t write_data(void* ptr, size_t size, size_t nmemb, FILE* stream) {
     size_t written = fwrite(ptr, size, nmemb, stream);
@@ -36,7 +36,7 @@ void HTLP_Download::setUrl(const char* url) {
     return;
 }
 
-void HTLP_Download::setUrlList(std::vector<char*> list) {
+void HTLP_Download::setUrlList(char** list) {
     this->_url_list = list;
     return;
 }

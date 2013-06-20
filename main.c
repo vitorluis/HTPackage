@@ -17,11 +17,11 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <cstdlib>
-#include <cstdio>
-#include <cstring>
-#include "htlp.hpp"
-#include "htlp_defines.hpp"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "htlp.h"
+#include "htlp_defines.h"
 
 /*
  * 

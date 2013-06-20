@@ -22,9 +22,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "htlp_database.hpp"
-#include "htlp_install.hpp"
-#include "htlp_download.hpp"
+#include "htlp_database.h"
+#include "htlp_install.h"
+#include "htlp_download.h"
 
 class HTLP {
 private:

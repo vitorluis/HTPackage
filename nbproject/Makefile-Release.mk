@@ -15,8 +15,8 @@ NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
 CC=gcc
-CCC=g++
-CXX=g++
+CCC=gcc
+CXX=gcc
 FC=gfortran
 AS=as
 
@@ -43,11 +43,11 @@ OBJECTFILES= \
 
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=-m64
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-m64
+CXXFLAGS=-m64
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -64,32 +64,32 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/htpackage: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/htpackage ${OBJECTFILES} ${LDLIBSOPTIONS}
+	gcc -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/htpackage ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/htlp.o: htlp.cpp 
+${OBJECTDIR}/htlp.o: htlp.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp.o htlp.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp.o htlp.c
 
-${OBJECTDIR}/htlp_database.o: htlp_database.cpp 
+${OBJECTDIR}/htlp_database.o: htlp_database.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_database.o htlp_database.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_database.o htlp_database.c
 
-${OBJECTDIR}/htlp_download.o: htlp_download.cpp 
+${OBJECTDIR}/htlp_download.o: htlp_download.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_download.o htlp_download.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_download.o htlp_download.c
 
-${OBJECTDIR}/htlp_install.o: htlp_install.cpp 
+${OBJECTDIR}/htlp_install.o: htlp_install.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_install.o htlp_install.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_install.o htlp_install.c
 
-${OBJECTDIR}/main.o: main.cpp 
+${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
 
 # Subprojects
 .build-subprojects:

@@ -26,10 +26,10 @@
 #include <fstream>
 #include <sstream>
 #include <map>
-#include "htlp_defines.hpp"
-#include "htlp_database.hpp"
-#include "htlp_download.hpp"
-#include "htlp_decompress.hpp"
+#include "htlp_defines.h"
+#include "htlp_database.h"
+#include "htlp_download.h"
+#include "htlp_decompress.h"
 
 class HTLP_Install {
 private:
