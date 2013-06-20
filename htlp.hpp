@@ -19,12 +19,9 @@
 
 #ifndef HTLP_HPP
 #define	HTLP_HPP
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <fstream>
-#include <sstream>
-#include <map>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "htlp_database.hpp"
 #include "htlp_install.hpp"
 #include "htlp_download.hpp"
