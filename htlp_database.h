@@ -21,9 +21,15 @@
 #define	HTLP_DATABASE_H
 #include "htlp_structs.h"
 
+/*
+ * Função para conexão com o banco de dados
+ */
+int htlp_database_openConnection(struct data_connection data, struct database * db);
 
-int openConnection(struct data_connection data, struct database * db);
-int executeQuery(char * sql, struct database * db);
+/*
+ * Função para execução de queries
+ */
+int htlp_database_executeQuery(char * sql, struct database * db);
 
 #endif	/* HTLP_DATABASE_H */
 
