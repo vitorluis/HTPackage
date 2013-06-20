@@ -18,15 +18,7 @@
  */
 #include "htlp.h"
 
-HTLP::HTLP(char ** args) {
-    if (strcmp("--version", args[1]) == 0) {
-        this->showVersion();
-    } else if (strcmp("--install", args[1]) == 0) {
-        this->installPackage(args[2]);
-    }
-}
-
-void HTLP::showVersion() {
+void showVersion() {
     printf("HTPackage - Gerenciador de Pacotes\n");
     printf("%c[1mVersão 0.1\n", 27);
     printf("%c[0m", 27);
@@ -35,11 +27,10 @@ void HTLP::showVersion() {
     printf("Bugs: bugs@howtolinux.com.br\n");
 }
 
-bool HTLP::installPackage(char* package) {
-    this->_install_packages = new HTLP_Install(package);
-    return true;
+int installPackage(char* package) {
+    return 0;
 }
 
-bool HTLP::localInstallPackage(char* filename) {
-    return true;
+int localInstallPackage(char* filename) {
+    return 0;
 }

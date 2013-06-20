@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
- * htlp_install.hpp
+ * htlp_install.h
  * Copyright (C) 2013 Vitor Luis V. Neto <vitor@softwaredevelopment.com.br>
  * 
  * HTPackage is free software: you can redistribute it and/or modify it
@@ -17,36 +17,24 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef HTLP_INSTALL_HPP
-#define	HTLP_INSTALL_HPP
+#ifndef HTLP_INSTALL_H
+#define	HTLP_INSTALL_H
 
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <fstream>
-#include <sstream>
-#include <map>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "htlp_defines.h"
 #include "htlp_database.h"
 #include "htlp_download.h"
 #include "htlp_decompress.h"
 
-class HTLP_Install {
-private:
-    char * _package;
-    HTLP_Download * _downloader;
-    HTLP_Database * _packages_database;
-    HTLP_Decompress * _decompress_package;
+char * _package;
 
-public:
-    HTLP_Install(char * package);
-    bool searchPackage();
-    bool resolvDependencies();
-    bool downloadPackages();
-    bool installPackages();
-    void freeMemory();
-};
+int htlp_install_searchPackage();
+int htlp_install_resolvDependencies();
+int htlp_install_downloadPackages();
+int htlp_install_installPackages();
+void htlp_install_freeMemory();
 
 
-#endif	/* HTLP_INSTALL_HPP */
-
+#endif	/* HTLP_INSTALL_H */

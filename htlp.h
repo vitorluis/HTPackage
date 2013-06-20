@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
- * htlp.hpp
+ * htlp.h
  * Copyright (C) 2013 Vitor Luis V. Neto <vitor@softwaredevelopment.com.br>
  * 
  * HTPackage is free software: you can redistribute it and/or modify it
@@ -17,8 +17,8 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef HTLP_HPP
-#define	HTLP_HPP
+#ifndef HTLP_H
+#define	HTLP_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -26,27 +26,76 @@
 #include "htlp_install.h"
 #include "htlp_download.h"
 
-class HTLP {
-private:
-    char * option;
-    char * name_package;
-    HTLP_Install * _install_packages;
+/*
+ * Valida os parametros que o usuário passar na linha de comando
+ * Verifica se o parametro existe, e faz a chamada a função correspondente
+ * 
+ */
+int validateOption();
 
-public:
-    HTLP(char ** args);
-    int validateOption();
-    void showVersion();
-    bool installPackage(char * package);
-    bool updatePackage(char * package);
-    bool localInstallPackage(char * filename);
-    bool upgradeAllPackages();
-    std::map<int, char*> searchPackage(char * package);
-    bool checkUpdate();
-    bool removePackage();
-    void showHelp();
-};
+/*
+ * Mostra a versão do programa e algumas informações
+ * adicionais e depois sai
+ */
 
+void showVersion();
 
+/*
+ * Faz chamada a principal função 
+ * que é resposavel pela instalação dos pacotes
+ */
 
-#endif	/* HTLP_HPP */
+int installPackage(char * package);
+
+/*
+ * Faz chamada a principal função que 
+ * é responsavel pelo upgrade de pacotes
+ */
+
+int upgradePackage(char * package);
+
+/*
+ * Faz chamada a principal função que 
+ * é responsavel pelo instalação de pacotes
+ * locais
+ */
+
+int localInstallPackage(char * filename);
+
+/*
+ * Faz chamada a principal função que 
+ * é responsavel pelo upgrade de pacotes
+ */
+
+int upgradeAllPackages();
+
+/*
+ * Faz chamada a principal função que 
+ * é responsavel pelo pesquisa de pacotes
+ * no repositório
+ */
+
+char ** searchPackage(char * package);
+
+/*
+ * Faz chamada a principal função que 
+ * é responsavel pelo upgrade de  todos os pacotes
+ * instalados no sistema
+ */
+int checkUpdate();
+
+/*
+ * Faz chamada a principal função que 
+ * é responsavel pela remoção de pacotes
+ * instalados no sistema
+ */
+
+int removePackage();
+
+/*
+ * Mostra o conteúdo de ajuda e sai
+ */
+void showHelp();
+
+#endif	/* HTLP_H */
 
