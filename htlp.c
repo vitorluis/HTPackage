@@ -34,3 +34,7 @@ int installPackage(char* package) {
 int localInstallPackage(char* filename) {
     return 0;
 }
+
+void showHelp() {
+    
+}
