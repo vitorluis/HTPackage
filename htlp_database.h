@@ -29,7 +29,7 @@ struct data_connection {
 };
 
 struct database {
-    
+    sqlite3 * _conn;
 };
 
 int openConnection(struct data_connection * data);
