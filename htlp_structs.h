@@ -10,8 +10,8 @@
 #include <sqlite3.h>
 
 struct package {
-    char * _name_package;
-    char * _url_package;
+    char  _name_package[100];
+    char  _url_package[100];
     int _package_size;
 };
 

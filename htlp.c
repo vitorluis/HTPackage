@@ -35,17 +35,13 @@ int installPackage(char* name_package) {
      */
     struct package * pack = malloc(sizeof * pack);
 
-    /*
-     * Aloca o char* do nome do package
-     */
-    pack->_name_package = (char*) malloc(100);
-
     /* Copia o nome do pacote que veio pelo parametro
      * Pra dentro da variavel _name_package da struct
      */
     strcpy(pack->_name_package, (const char *) name_package);
 
-    //Uma série de rotinas para a instalação, chamamos a principal
+    //Existe uma série de rotinas para a instalação, chamamos a principal
+    htlp_install_main(pack);
     return 0;
 }
 
