@@ -22,16 +22,6 @@
 
 #include "htlp_database.h"
 
-class HTLP_Search {
-private:
-    char * _search;
-    HTLP_Database * _package_database;
-    bool openDatabase();
-public:
-    HTLP_Search(char * search);
-    bool query();
-};
-
 
 #endif	/* HTLP_SEARCH_HPP */
 
