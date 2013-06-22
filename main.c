@@ -27,7 +27,7 @@
  * 
  */
 int main(int argc, char** argv) {
-
+    installPackage("teste-1.0.htl");
     return 0;
 }
 

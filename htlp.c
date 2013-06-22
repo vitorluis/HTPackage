@@ -27,7 +27,25 @@ void showVersion() {
     printf("Bugs: bugs@howtolinux.com.br\n");
 }
 
-int installPackage(char* package) {
+int installPackage(char* name_package) {
+    /*
+     * Monta a estrutura do package
+     *
+     * Aloca a memória
+     */
+    struct package * pack = malloc(sizeof * pack);
+
+    /*
+     * Aloca o char* do nome do package
+     */
+    pack->_name_package = (char*) malloc(100);
+
+    /* Copia o nome do pacote que veio pelo parametro
+     * Pra dentro da variavel _name_package da struct
+     */
+    strcpy(pack->_name_package, (const char *) name_package);
+
+    //Uma série de rotinas para a instalação, chamamos a principal
     return 0;
 }
 
@@ -36,5 +54,5 @@ int localInstallPackage(char* filename) {
 }
 
 void showHelp() {
-    
+
 }

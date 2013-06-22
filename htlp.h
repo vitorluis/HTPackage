@@ -45,14 +45,14 @@ void showVersion();
  * que é resposavel pela instalação dos pacotes
  */
 
-int installPackage(char * package);
+int installPackage(char * name_package);
 
 /*
  * Faz chamada a principal função que 
  * é responsavel pelo upgrade de pacotes
  */
 
-int upgradePackage(char * package);
+int upgradePackage(char * name_package);
 
 /*
  * Faz chamada a principal função que 
@@ -75,7 +75,7 @@ int upgradeAllPackages();
  * no repositório
  */
 
-char ** searchPackage(char * package);
+char ** searchPackage(char * name_package);
 
 /*
  * Faz chamada a principal função que 
