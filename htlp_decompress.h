@@ -24,6 +24,9 @@
 #include <string.h>
 #include <bzlib.h>
 #include <unistd.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <sys/sendfile.h>
 #include "htlp_defines.h"
 #include "htlp_structs.h"
 #include "htlp_typedefs.h"
@@ -31,5 +34,9 @@
 int htlp_decompress_main(Package * package);
 
 int htlp_decompress_decompress(char * filename);
+
+int htlp_decompress_copy_file(char * filename);
+
+int htlp_decompress_open_file(char * filename, FILE * file_stream);
 #endif	/* HTLP_DECOMPRESS_PACKAGE_HPP */
 
