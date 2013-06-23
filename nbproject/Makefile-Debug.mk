@@ -58,7 +58,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=`pkg-config --libs libcurl`  
+LDLIBSOPTIONS=`pkg-config --libs libcurl` -lbz2  
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
