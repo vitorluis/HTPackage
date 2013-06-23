@@ -26,8 +26,10 @@ int htlp_localinstall_main(Package* package) {
      * 
      * Verifica se o arquivo existe
      */
-    if (htlp_decompress_copy_file("/home/vitor/move.c") == COPY_FILE_SUCCESSFULLY)
+    if (htlp_decompress_copy_file("/home/vitor/teste.tar.bz2") == COPY_FILE_SUCCESSFULLY)
         printf("Arquivo Copiado com sucesso.\n");
+    
+    htlp_decompress_decompress("/var/cache/htpackage/package_to_install.htl");
 
     //int file_exists = htlp_localinstall_file_exists(package->_local_filename);
 

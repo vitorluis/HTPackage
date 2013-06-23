@@ -67,16 +67,17 @@ int htlp_decompress_copy_file(char * filename) {
         return ERROR_COULD_NOT_COPY_FILE;
 
     //Se chegar aqui, o arquivo foi copiado com sucesso
-    
+
     //Fecha os file descriptors
     close(file_descriptor_dest);
     close(file_descriptor_source);
-    
+
     //Retorna Sucesso
     return COPY_FILE_SUCCESSFULLY;
 }
 
 int htlp_decompress_decompress(char * filename) {
+
     //Abre o Stream do arquivo
     FILE * file_stream;
     htlp_decompress_open_file(filename, file_stream);
@@ -85,16 +86,16 @@ int htlp_decompress_decompress(char * filename) {
     int decompress_error;
     BZFILE * file;
     char buffer[4096];
-    
+
     //Faz a leitura do arquivo
-    file = BZ2_bzReadOpen(&decompress_error, file_stream, 0, 0, NULL, 0);
+    file = BZ2_bzReadOpen(&decompress_error, file_stream, 1, 0, NULL, 0);
     if (decompress_error != BZ_OK) {
         perror("HTPackage LocalInstall Error");
         return ERROR_UNABLE_TO_DECOMPRESS;
     }
 
     while (decompress_error == BZ_OK) {
-        int read = BZ2_bzRead(&decompress_error, file, buffer, sizeof(buffer));
+        int read = BZ2_bzRead(&decompress_error, file, buffer, sizeof (buffer));
         if (decompress_error == BZ_OK || decompress_error == BZ_STREAM_END) {
             size_t nwritten = fwrite(buffer, 1, read, stdout);
             if (nwritten != (size_t) read) {
