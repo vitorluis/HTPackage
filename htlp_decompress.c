@@ -81,34 +81,36 @@ int htlp_decompress_decompress(char * filename) {
     FILE * file_stream;
     htlp_decompress_open_file(filename, file_stream);
 
-    //Faz a descompactação
-    int bzError;
-    BZFILE *bzf;
-    char buf[4096];
-
-    bzf = BZ2_bzReadOpen(&bzError, file_stream, 0, 0, NULL, 0);
-    if (bzError != BZ_OK) {
+    //Declara algumas vars necesárias
+    int decompress_error;
+    BZFILE * file;
+    char buffer[4096];
+    
+    //Faz a leitura do arquivo
+    file = BZ2_bzReadOpen(&decompress_error, file_stream, 0, 0, NULL, 0);
+    if (decompress_error != BZ_OK) {
         perror("HTPackage LocalInstall Error");
         return ERROR_UNABLE_TO_DECOMPRESS;
     }
 
-    while (bzError == BZ_OK) {
-        int nread = BZ2_bzRead(&bzError, bzf, buf, sizeof buf);
-        if (bzError == BZ_OK || bzError == BZ_STREAM_END) {
-            size_t nwritten = fwrite(buf, 1, nread, stdout);
-            if (nwritten != (size_t) nread) {
+    while (decompress_error == BZ_OK) {
+        int read = BZ2_bzRead(&decompress_error, file, buffer, sizeof(buffer));
+        if (decompress_error == BZ_OK || decompress_error == BZ_STREAM_END) {
+            size_t nwritten = fwrite(buffer, 1, read, stdout);
+            if (nwritten != (size_t) read) {
                 fprintf(stderr, "E: short write\n");
                 return -1;
             }
         }
     }
 
-    if (bzError != BZ_STREAM_END) {
-        fprintf(stderr, "E: bzip error after read: %d\n", bzError);
+    if (decompress_error != BZ_STREAM_END) {
+        fprintf(stderr, "E: bzip error after read: %d\n", decompress_error);
         return -1;
     }
 
-    BZ2_bzReadClose(&bzError, bzf);
+    BZ2_bzReadClose(&decompress_error, file);
+    return 0;
 }
 
 int htlp_decompress_open_file(char* filename, FILE * file_stream) {
