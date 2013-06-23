@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
- * htlp_decompress.h
+ * htlp_decompress.c
  * Copyright (C) 2013 Vitor Luis V. Neto <vitor@softwaredevelopment.com.br>
  * 
  * HTPackage is free software: you can redistribute it and/or modify it
@@ -16,19 +16,12 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "htlp_decompress.h"
 
-#ifndef HTLP_DECOMPRESS_PACKAGE_H
-#define	HTLP_DECOMPRESS_PACKAGE_H
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <bzlib.h>
-#include <unistd.h>
-#include "htlp_defines.h"
-#include "htlp_structs.h"
+int htlp_decompress_main(package* package) {
 
-int htlp_decompress_main(struct package * package);
+}
 
-int htlp_decompress_decompress(char * filename);
-#endif	/* HTLP_DECOMPRESS_PACKAGE_HPP */
+int htlp_decompress_decompress() {
 
+}
