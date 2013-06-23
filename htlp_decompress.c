@@ -23,38 +23,52 @@ int htlp_decompress_main(Package* package) {
 }
 
 int htlp_decompress_copy_file(char * filename) {
-    /*
-        int fdSource = open(source, O_RDONLY);
 
-        if (fdSource > 0) {
-            if (lockf(fdSource, F_LOCK, 0) == -1) return 0; 
-     *    } else return 0;
+    //Declaração das vars
+    int file_descriptor_source;
+    int file_descriptor_dest;
+    char filename_dest[150];
+    off_t offset = 0;
+    struct stat stat_source;
+    int copy_file;
+
+    //Monta o path do arquivo de destino
+    //Diretório do /var/cache/htpackage
+    strcat(filename_dest, CACHE_PATH);
+
+    //Nome do arquivo
+    strcat(filename_dest, (const char *) filename);
 
 
-        int fdDest = open(dest, O_CREAT);
-        off_t lCount;
-        struct stat sourceStat;
-        if (fdSource > 0 && fdDest > 0) {
-            if (!stat(source, &sourceStat)) {
-                int len = sendfile(fdDest, fdSource, &lCount, sourceStat.st_size);
-                if (len > 0 && len == sourceStat.st_size) {
-                    close(fdDest);
-                    close(fdSource);
+    //Chama a syscall que abre o arquivo origem
+    file_descriptor_source = open(filename, O_RDONLY);
 
-                    if (lockf(fdSource, T_LOCK, 0) == -1) {
-                        if (lockf(fdSource, F_ULOCK, 0) == -1) {
+    //Verifica se o arquivo foi aberto com sucesso, se não, retorna o erro
+    if (file_descriptor_source == -1)
+        return ERROR_COULD_NOT_OPEN_FILE;
 
-                        } else {
-                            return 1; 
-                        }
-                    } else {
+    //Pega tamanho e permissão do arquivo de origem
+    stat((const char *) filename, &stat_source);
 
-                        return 0; 
-                    }
-                }
-            }
-        }*/
-    return 0;
+    //Se chegar aqui, o arquivo origem foi aberto com sucesso
+    //Vamos para a abertura do arquivo de destino.
+
+    //Chama a syscall que abre o arquivo de destino
+    file_descriptor_dest = open(filename_dest, O_CREAT);
+
+    //Verifica se o arquivo foi criado.
+    if (file_descriptor_dest == -1)
+        return ERROR_COULD_NOT_CREATE_FILE;
+
+    //Se chegar aqui, beleza, continua o processo de cópia
+    copy_file = sendfile(file_descriptor_dest, file_descriptor_source, &offset, stat_source.st_size);
+    
+    //Verifica se foi copiado com sucesso
+    if (copy_file != stat_source.st_size)
+        return ERROR_COULD_NOT_COPY_FILE;
+
+    //Se chegar aqui, o arquivo foi copiado com sucesso
+    return COPY_FILE_SUCCESSFULLY;
 }
 
 int htlp_decompress_decompress(char * filename) {
@@ -96,7 +110,7 @@ int htlp_decompress_open_file(char* filename, FILE * file_stream) {
     file_stream = fopen(filename, "rb");
     if (file_stream == NULL) {
         perror(filename);
-        return ERROR_COULD_OPEN_STREAM_FILE;
+        return ERROR_COULD_NOT_OPEN_STREAM_FILE;
     }
     fseek(file_stream, 0, SEEK_SET);
     return OPEN_STREAM_FILE_SUCCESSFULLY;

@@ -27,6 +27,8 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <sys/sendfile.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include "htlp_defines.h"
 #include "htlp_structs.h"
 #include "htlp_typedefs.h"
