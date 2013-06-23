@@ -88,6 +88,7 @@ int htlp_decompress_decompress(char * filename) {
     char buffer[4096];
 
     //Faz a leitura do arquivo
+    //TODO: Erro é aqui
     file = BZ2_bzReadOpen(&decompress_error, file_stream, 1, 0, NULL, 0);
     if (decompress_error != BZ_OK) {
         perror("HTPackage LocalInstall Error");
