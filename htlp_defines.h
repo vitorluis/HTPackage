@@ -73,7 +73,14 @@
  * Definições do cURL
  */
 
-#define DOWNLOAD_SUCCESSFULL 113
+#define DOWNLOAD_SUCCESSFULLY 113
+
+/*
+ * Definições de Instalação
+ */
+
+#define INSTALLATION_SUCCESSFULLY 114
+#define INSTALLATION_FAILED 115
 
 #endif	/* HTLP_DEFINES_HPP */
 

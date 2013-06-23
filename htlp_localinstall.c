@@ -18,3 +18,32 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "htlp_localinstall.h"
+
+int htlp_localinstall_main(struct package* package) {
+
+    /*
+     * Processos de instalação do local package
+     * 
+     * Verifica se o arquivo existe
+     */
+    int file_exists = htlp_localinstall_file_exists(package->_local_filename);
+
+    if (file_exists == ERROR_FILE_NOT_FOUND) {
+        perror("HTPackage Local Install Error");
+        return INSTALLATION_FAILED;
+    }
+
+    /*
+     * Se o arquivo existe, vamos para o proximo passo
+     * Que é descompactar o arquivo
+     */
+    
+    
+    return INSTALLATION_SUCCESSFULLY;
+}
+
+int htlp_localinstall_file_exists(char * filename) {
+    if (access(filename, F_OK)) {
+        return ERROR_FILE_NOT_FOUND;
+    }
+}

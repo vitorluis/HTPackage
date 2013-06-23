@@ -19,6 +19,25 @@
 
 #ifndef HTLP_LOCALINSTALL_H
 #define	HTLP_LOCALINSTALL_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <errno.h>
+#include "htlp_defines.h"
+#include "htlp_structs.h"
+#include "htlp_decompress.h"
+
+int htlp_localinstall_main(struct package * package);
+
+int htlp_localisntall_file_exists(char * filename);
+
+int htlp_localinstall_decompress(char * filename);
+
+int htlp_localinstall_parse_conf(char * filename);
+
+int htlp_localinstall_copy_files(char * output_dir);
 
 #endif	/* HTLP_LOCALINSTALL_H */
 

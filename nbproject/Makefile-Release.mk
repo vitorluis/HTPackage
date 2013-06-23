@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/htlp_database.o \
 	${OBJECTDIR}/htlp_download.o \
 	${OBJECTDIR}/htlp_install.o \
+	${OBJECTDIR}/htlp_localinstall.o \
 	${OBJECTDIR}/main.o
 
 
@@ -85,6 +86,11 @@ ${OBJECTDIR}/htlp_install.o: htlp_install.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_install.o htlp_install.c
+
+${OBJECTDIR}/htlp_localinstall.o: htlp_localinstall.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_localinstall.o htlp_localinstall.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}

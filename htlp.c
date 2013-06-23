@@ -46,6 +46,22 @@ int installPackage(char* name_package) {
 }
 
 int localInstallPackage(char* filename) {
+    /*
+     * Monta a estrutura do package
+     *
+     * Aloca a memória
+     */
+    struct package * pack = malloc(sizeof * pack);
+
+    /* Copia o nome do pacote que veio pelo parametro
+     * Pra dentro da variavel _name_package da struct
+     */
+    strcpy(pack->_local_filename, (const char *) filename);
+    
+    //Existe uma série de rotinas para a instalação
+    //de pacotes locais, então chamamos a principal
+    htlp_localinstall_main(pack);
+
     return 0;
 }
 
