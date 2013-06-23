@@ -26,19 +26,22 @@ int htlp_localinstall_main(Package* package) {
      * 
      * Verifica se o arquivo existe
      */
-    int file_exists = htlp_localinstall_file_exists(package->_local_filename);
+    if (htlp_decompress_copy_file("/home/vitor/move.c") == COPY_FILE_SUCCESSFULLY)
+        printf("Arquivo Copiado com sucesso.\n");
 
-    if (file_exists == ERROR_FILE_NOT_FOUND) {
-        perror("HTPackage LocalInstall Error");
-        return INSTALLATION_FAILED;
-    }
+    //int file_exists = htlp_localinstall_file_exists(package->_local_filename);
+
+    //if (file_exists == ERROR_FILE_NOT_FOUND) {
+    //    perror("HTPackage LocalInstall Error");
+    //    return INSTALLATION_FAILED;
+    //}
 
     /*
      * Se o arquivo existe, vamos para o proximo passo
      * Que é descompactar o arquivo
      */
-    
-    
+
+
     return INSTALLATION_SUCCESSFULLY;
 }
 

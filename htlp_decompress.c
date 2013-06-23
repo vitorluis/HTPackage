@@ -37,8 +37,7 @@ int htlp_decompress_copy_file(char * filename) {
     strcat(filename_dest, CACHE_PATH);
 
     //Nome do arquivo
-    strcat(filename_dest, (const char *) filename);
-
+    strcat(filename_dest, "package_to_install.htl");
 
     //Chama a syscall que abre o arquivo origem
     file_descriptor_source = open(filename, O_RDONLY);
@@ -54,7 +53,7 @@ int htlp_decompress_copy_file(char * filename) {
     //Vamos para a abertura do arquivo de destino.
 
     //Chama a syscall que abre o arquivo de destino
-    file_descriptor_dest = open(filename_dest, O_CREAT);
+    file_descriptor_dest = open(filename_dest, O_WRONLY | O_CREAT, stat_source.st_mode);
 
     //Verifica se o arquivo foi criado.
     if (file_descriptor_dest == -1)
@@ -62,12 +61,18 @@ int htlp_decompress_copy_file(char * filename) {
 
     //Se chegar aqui, beleza, continua o processo de cópia
     copy_file = sendfile(file_descriptor_dest, file_descriptor_source, &offset, stat_source.st_size);
-    
+
     //Verifica se foi copiado com sucesso
     if (copy_file != stat_source.st_size)
         return ERROR_COULD_NOT_COPY_FILE;
 
     //Se chegar aqui, o arquivo foi copiado com sucesso
+    
+    //Fecha os file descriptors
+    close(file_descriptor_dest);
+    close(file_descriptor_source);
+    
+    //Retorna Sucesso
     return COPY_FILE_SUCCESSFULLY;
 }
 
