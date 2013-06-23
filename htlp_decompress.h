@@ -27,7 +27,7 @@
 #include "htlp_defines.h"
 #include "htlp_structs.h"
 
-int htlp_decompress_main(struct package * package);
+int htlp_decompress_main(Package * package);
 
 int htlp_decompress_decompress(char * filename);
 #endif	/* HTLP_DECOMPRESS_PACKAGE_HPP */

@@ -19,7 +19,7 @@
  */
 #include "htlp_localinstall.h"
 
-int htlp_localinstall_main(struct package* package) {
+int htlp_localinstall_main(Package* package) {
 
     /*
      * Processos de instalação do local package

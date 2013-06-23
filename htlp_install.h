@@ -29,7 +29,7 @@
 #include "htlp_download.h"
 #include "htlp_decompress.h"
 
-int htlp_install_main(struct package * package);
+int htlp_install_main(Package * package);
 int htlp_install_searchPackage();
 int htlp_install_resolvDependencies();
 int htlp_install_downloadPackages();

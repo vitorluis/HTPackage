@@ -39,8 +39,8 @@ char ** _url_list;
 CURL * _downloader;
 CURLcode _res;
 FILE * _stream_file;
-int downloadPackage(struct package * package);
-int downloadPackageList(struct package packages[]);
+int downloadPackage(Package * package);
+int downloadPackageList(Package packages[]);
 
 
 #endif	/* HTLP_DOWNLOAD_HPP */

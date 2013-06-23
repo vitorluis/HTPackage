@@ -33,7 +33,7 @@ int installPackage(char* name_package) {
      *
      * Aloca a memória
      */
-    struct package * pack = malloc(sizeof * pack);
+    Package * pack = malloc(sizeof * pack);
 
     /* Copia o nome do pacote que veio pelo parametro
      * Pra dentro da variavel _name_package da struct
@@ -51,7 +51,7 @@ int localInstallPackage(char* filename) {
      *
      * Aloca a memória
      */
-    struct package * pack = malloc(sizeof * pack);
+    Package * pack = malloc(sizeof * pack);
 
     /* Copia o nome do pacote que veio pelo parametro
      * Pra dentro da variavel _name_package da struct

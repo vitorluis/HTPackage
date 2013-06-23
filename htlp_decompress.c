@@ -18,7 +18,7 @@
  */
 #include "htlp_decompress.h"
 
-int htlp_decompress_main(package* package) {
+int htlp_decompress_main(Package* package) {
 
 }
 

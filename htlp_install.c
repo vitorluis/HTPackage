@@ -18,7 +18,7 @@
  */
 #include "htlp_install.h"
 
-int htlp_install_main(struct package* package) {
+int htlp_install_main(Package* package) {
     /*
      * Procedimentos para a instalação do pacote
      */

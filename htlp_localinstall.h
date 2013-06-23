@@ -29,7 +29,7 @@
 #include "htlp_structs.h"
 #include "htlp_decompress.h"
 
-int htlp_localinstall_main(struct package * package);
+int htlp_localinstall_main(Package * package);
 
 int htlp_localisntall_file_exists(char * filename);
 
