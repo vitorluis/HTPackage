@@ -22,6 +22,6 @@ int htlp_decompress_main(Package* package) {
 
 }
 
-int htlp_decompress_decompress() {
+int htlp_decompress_decompress(char * filename) {
 
 }

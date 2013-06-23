@@ -26,6 +26,7 @@
 #include <unistd.h>
 #include "htlp_defines.h"
 #include "htlp_structs.h"
+#include "htlp_typedefs.h"
 
 int htlp_decompress_main(Package * package);
 

@@ -27,6 +27,7 @@
 #include <errno.h>
 #include "htlp_defines.h"
 #include "htlp_structs.h"
+#include "htlp_typedefs.h"
 #include "htlp_decompress.h"
 
 int htlp_localinstall_main(Package * package);

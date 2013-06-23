@@ -13,6 +13,7 @@
       <itemPath>htlp_localinstall.h</itemPath>
       <itemPath>htlp_search.h</itemPath>
       <itemPath>htlp_structs.h</itemPath>
+      <itemPath>htlp_typedefs.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -23,6 +24,7 @@
                    projectFiles="true">
       <itemPath>htlp.c</itemPath>
       <itemPath>htlp_database.c</itemPath>
+      <itemPath>htlp_decompress.c</itemPath>
       <itemPath>htlp_download.c</itemPath>
       <itemPath>htlp_install.c</itemPath>
       <itemPath>htlp_localinstall.c</itemPath>
@@ -67,6 +69,8 @@
       </item>
       <item path="htlp_database.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="htlp_decompress.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="htlp_decompress.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="htlp_defines.h" ex="false" tool="3" flavor2="0">
@@ -86,6 +90,8 @@
       <item path="htlp_search.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="htlp_structs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="htlp_typedefs.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="1" flavor2="0">
       </item>
@@ -125,6 +131,8 @@
       </item>
       <item path="htlp_database.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="htlp_decompress.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="htlp_decompress.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="htlp_defines.h" ex="false" tool="3" flavor2="0">
@@ -144,6 +152,8 @@
       <item path="htlp_search.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="htlp_structs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="htlp_typedefs.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="1" flavor2="0">
       </item>

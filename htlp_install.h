@@ -28,6 +28,7 @@
 #include "htlp_database.h"
 #include "htlp_download.h"
 #include "htlp_decompress.h"
+#include "htlp_typedefs.h"
 
 int htlp_install_main(Package * package);
 int htlp_install_searchPackage();

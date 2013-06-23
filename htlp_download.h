@@ -30,6 +30,7 @@
 #include <fcntl.h>
 #include "htlp_defines.h"
 #include "htlp_structs.h"
+#include "htlp_typedefs.h"
 
 size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream);
 
