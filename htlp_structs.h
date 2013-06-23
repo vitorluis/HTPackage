@@ -4,7 +4,6 @@
  *
  * Created on June 20, 2013, 8:28 PM
  */
-
 #ifndef HTLP_STRUCTS_H
 #define	HTLP_STRUCTS_H
 #include <sqlite3.h>
@@ -25,6 +24,22 @@ struct data_connection {
 
 struct database {
     sqlite3 * _conn;
+};
+
+struct bz_stream {
+    char *next_in;
+    unsigned int avail_in;
+    unsigned int total_in;
+
+    char *next_out;
+    unsigned int avail_out;
+    unsigned int total_out;
+
+    void *state;
+
+    void *(*bzalloc)(void *, int, int);
+    void (*bzfree)(void *, void *);
+    void *opaque;
 };
 
 #endif	/* HTLP_STRUCTS_H */
