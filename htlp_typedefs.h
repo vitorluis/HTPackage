@@ -7,6 +7,7 @@
 
 #ifndef HTLP_TYPEDEFS_H
 #define	HTLP_TYPEDEFS_H
+#include "htlp_structs.h"
 
 //Struct Package
 typedef struct package Package;
