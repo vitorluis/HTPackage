@@ -30,6 +30,7 @@
 #include <fcntl.h>
 #include "htlp_defines.h"
 #include "htlp_structs.h"
+#include "htlp_typedefs.h"
 
 size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream);
 
@@ -39,8 +40,8 @@ char ** _url_list;
 CURL * _downloader;
 CURLcode _res;
 FILE * _stream_file;
-int downloadPackage(struct package * package);
-int downloadPackageList(struct package packages[]);
+int downloadPackage(Package * package);
+int downloadPackageList(Package packages[]);
 
 
 #endif	/* HTLP_DOWNLOAD_HPP */

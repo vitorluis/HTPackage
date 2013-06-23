@@ -37,8 +37,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/htlp.o \
 	${OBJECTDIR}/htlp_database.o \
+	${OBJECTDIR}/htlp_decompress.o \
 	${OBJECTDIR}/htlp_download.o \
 	${OBJECTDIR}/htlp_install.o \
+	${OBJECTDIR}/htlp_localinstall.o \
 	${OBJECTDIR}/main.o
 
 
@@ -76,6 +78,11 @@ ${OBJECTDIR}/htlp_database.o: htlp_database.c
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_database.o htlp_database.c
 
+${OBJECTDIR}/htlp_decompress.o: htlp_decompress.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_decompress.o htlp_decompress.c
+
 ${OBJECTDIR}/htlp_download.o: htlp_download.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -85,6 +92,11 @@ ${OBJECTDIR}/htlp_install.o: htlp_install.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_install.o htlp_install.c
+
+${OBJECTDIR}/htlp_localinstall.o: htlp_localinstall.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_localinstall.o htlp_localinstall.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}

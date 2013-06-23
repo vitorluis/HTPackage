@@ -27,7 +27,7 @@
  * 
  */
 int main(int argc, char** argv) {
-
+    localInstallPackage("/home/vitor/test");
     return 0;
 }
 

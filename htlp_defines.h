@@ -48,6 +48,7 @@
 #define ERROR_PERMISSION_DENIED 110
 #define ERROR_UNABLE_TO_DECOMPRESS 111
 #define ERROR_UNABLE_TO_COMPRESS 112
+#define ERROR_COULD_OPEN_STREAM_FILE 116
 
 /*
  * Definições de paths
@@ -73,7 +74,23 @@
  * Definições do cURL
  */
 
-#define DOWNLOAD_SUCCESSFULL 113
+#define DOWNLOAD_SUCCESSFULLY 113
+
+/*
+ * Definições de Instalação
+ */
+
+
+
+#define INSTALLATION_SUCCESSFULLY 114
+#define INSTALLATION_FAILED 115
+
+/*
+ * Definições de arquivos
+ */
+
+
+#define OPEN_STREAM_FILE_SUCCESSFULLY 117
 
 #endif	/* HTLP_DEFINES_HPP */
 

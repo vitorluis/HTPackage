@@ -25,6 +25,7 @@
 #include "htlp_database.h"
 #include "htlp_install.h"
 #include "htlp_download.h"
+#include "htlp_localinstall.h"
 
 /*
  * Valida os parametros que o usuário passar na linha de comando
@@ -45,14 +46,26 @@ void showVersion();
  * que é resposavel pela instalação dos pacotes
  */
 
-int installPackage(char * package);
+int installPackage(char * name_package);
+
+
+/*
+ * Faz chamada a principal função que 
+ * é responsavel pela instalação dos 
+ * pacotes locais
+ */
+
+
+int localInstallPackage(char * local_filename);
+
 
 /*
  * Faz chamada a principal função que 
  * é responsavel pelo upgrade de pacotes
  */
 
-int upgradePackage(char * package);
+
+int upgradePackage(char * name_package);
 
 /*
  * Faz chamada a principal função que 
@@ -75,7 +88,7 @@ int upgradeAllPackages();
  * no repositório
  */
 
-char ** searchPackage(char * package);
+char ** searchPackage(char * name_package);
 
 /*
  * Faz chamada a principal função que 

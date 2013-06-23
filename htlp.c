@@ -27,14 +27,44 @@ void showVersion() {
     printf("Bugs: bugs@howtolinux.com.br\n");
 }
 
-int installPackage(char* package) {
+int installPackage(char* name_package) {
+    /*
+     * Monta a estrutura do package
+     *
+     * Aloca a memória
+     */
+    Package * pack = malloc(sizeof * pack);
+
+    /* Copia o nome do pacote que veio pelo parametro
+     * Pra dentro da variavel _name_package da struct
+     */
+    strcpy(pack->_name_package, (const char *) name_package);
+
+    //Existe uma série de rotinas para a instalação, chamamos a principal
+    htlp_install_main(pack);
     return 0;
 }
 
 int localInstallPackage(char* filename) {
+    /*
+     * Monta a estrutura do package
+     *
+     * Aloca a memória
+     */
+    Package * pack = malloc(sizeof * pack);
+
+    /* Copia o nome do pacote que veio pelo parametro
+     * Pra dentro da variavel _name_package da struct
+     */
+    strcpy(pack->_local_filename, (const char *) filename);
+    
+    //Existe uma série de rotinas para a instalação
+    //de pacotes locais, então chamamos a principal
+    htlp_localinstall_main(pack);
+
     return 0;
 }
 
 void showHelp() {
-    
+
 }

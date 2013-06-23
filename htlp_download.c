@@ -24,7 +24,7 @@ size_t write_data(void* ptr, size_t size, size_t nmemb, FILE* stream) {
     return written;
 }
 
-int downloadPackage(struct package * package) {
+int downloadPackage(Package * package) {
     //Inicia o ponteiro de cURL
     //this->_downloader = curl_easy_init();
 
