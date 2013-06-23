@@ -29,7 +29,7 @@ int htlp_localinstall_main(struct package* package) {
     int file_exists = htlp_localinstall_file_exists(package->_local_filename);
 
     if (file_exists == ERROR_FILE_NOT_FOUND) {
-        perror("HTPackage Local Install Error");
+        perror("HTPackage LocalInstall Error");
         return INSTALLATION_FAILED;
     }
 
