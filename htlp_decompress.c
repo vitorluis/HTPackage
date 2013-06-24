@@ -44,10 +44,8 @@ int htlp_decompress_copy_file(char * filename) {
     if (temp_filename_dest == NULL) {
         strcat(filename_dest, (const char *) temp_filename_dest);
     } else {
-        strcat(filename_dest, temp_filename_dest+1);
+        strcat(filename_dest, (const char *) temp_filename_dest+1);
     }
-    printf("%s\n",filename_dest);
-    strcat(filename_dest, (const char *) filename_dest);
 
     //Chama a syscall que abre o arquivo origem
     file_descriptor_source = open(filename, O_RDONLY);
