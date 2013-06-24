@@ -105,7 +105,7 @@ int htlp_decompress_decompress(char * filename) {
         return -1;
     }
     
-    if (tar_extract_all(tar_file, filename) != 0) {
+    if (tar_extract_all(tar_file, rootdir) != 0) {
         fprintf(stderr, "tar_extract_all(): %s\n", strerror(errno));
         return -1;
     }
