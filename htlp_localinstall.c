@@ -26,10 +26,10 @@ int htlp_localinstall_main(Package* package) {
      * 
      * Verifica se o arquivo existe
      */
-    if (htlp_decompress_copy_file("/home/vitor/teste.tar.bz2") == COPY_FILE_SUCCESSFULLY)
+    if (htlp_decompress_copy_file("/home/vitor/ambiance-xfce.tar.gz") == COPY_FILE_SUCCESSFULLY)
         printf("Arquivo Copiado com sucesso.\n");
     
-    htlp_decompress_decompress("/var/cache/htpackage/teste.tar.bz");
+    htlp_decompress_decompress("/var/cache/htpackage/ambiance-xfce.tar.gz");
 
     //int file_exists = htlp_localinstall_file_exists(package->_local_filename);
 

@@ -94,22 +94,23 @@ int htlp_decompress_copy_file(char * filename) {
 int htlp_decompress_decompress(char * filename) {
 
     //Declara as vars
-    TAR *t;
+    TAR * tar_file;
     char rootdir[200];
+    strcpy(rootdir,"/var/cache/htpackage/");
 
     //Cria a pasta para jogar os arquivos dentro
 
-    if (tar_open(&t, filename, O_RDONLY, 0, 0, TAR_GNU) == -1) {
+    if (tar_open(&tar_file, filename, O_RDONLY, 0, 0, TAR_GNU) == -1) {
         fprintf(stderr, "tar_open(): %s\n", strerror(errno));
         return -1;
     }
 
-    if (tar_extract_all(t, rootdir) != 0) {
+    if (tar_extract_all(tar_file, "/var/cache/htpackage/") != 0) {
         fprintf(stderr, "tar_extract_all(): %s\n", strerror(errno));
         return -1;
     }
 
-    if (tar_close(t) != 0) {
+    if (tar_close(tar_file) != 0) {
         fprintf(stderr, "tar_close(): %s\n", strerror(errno));
         return -1;
     }
