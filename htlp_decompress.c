@@ -96,6 +96,8 @@ int htlp_decompress_decompress(char * filename) {
     //Declara as vars
     TAR * tar_file;
     char rootdir[200];
+    
+    //Copia o diretório de output
     strcpy(rootdir, "/var/cache/htpackage/");
 
     //Cria a pasta para jogar os arquivos dentro
