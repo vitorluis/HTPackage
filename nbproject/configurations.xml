@@ -58,7 +58,7 @@
         <linkerTool>
           <linkerLibItems>
             <linkerOptionItem>`pkg-config --libs libcurl`</linkerOptionItem>
-            <linkerOptionItem>-lbz2</linkerOptionItem>
+            <linkerLibLibItem>tar</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

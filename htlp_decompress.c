@@ -27,17 +27,27 @@ int htlp_decompress_copy_file(char * filename) {
     //Declaração das vars
     int file_descriptor_source;
     int file_descriptor_dest;
-    char filename_dest[150];
+    char * filename_dest;
+    char * temp_filename_dest;
     off_t offset = 0;
     struct stat stat_source;
     int copy_file;
 
     //Monta o path do arquivo de destino
     //Diretório do /var/cache/htpackage
+    filename_dest = (char *) malloc(sizeof (char)*150);
+    temp_filename_dest = (char *) malloc(sizeof (char)*150);
     strcat(filename_dest, CACHE_PATH);
 
-    //Nome do arquivo
-    strcat(filename_dest, "package_to_install.htl");
+    //Monta o nome do arquivo de destino
+    temp_filename_dest = strrchr(filename, '/');
+    if (temp_filename_dest == NULL) {
+        strcat(filename_dest, (const char *) temp_filename_dest);
+    } else {
+        strcat(filename_dest, temp_filename_dest+1);
+    }
+    printf("%s\n",filename_dest);
+    strcat(filename_dest, (const char *) filename_dest);
 
     //Chama a syscall que abre o arquivo origem
     file_descriptor_source = open(filename, O_RDONLY);
@@ -72,46 +82,38 @@ int htlp_decompress_copy_file(char * filename) {
     close(file_descriptor_dest);
     close(file_descriptor_source);
 
+    //Desaloca a memória
+    free(temp_filename_dest);
+    free(filename_dest);
+    free(filename);
+
     //Retorna Sucesso
     return COPY_FILE_SUCCESSFULLY;
 }
 
 int htlp_decompress_decompress(char * filename) {
 
-    //Abre o Stream do arquivo
-    FILE * file_stream;
-    htlp_decompress_open_file(filename, file_stream);
+    //Declara as vars
+    TAR *t;
+    char rootdir[200];
 
-    //Declara algumas vars necesárias
-    int decompress_error;
-    BZFILE * file;
-    char buffer[4096];
+    //Cria a pasta para jogar os arquivos dentro
 
-    //Faz a leitura do arquivo
-    //TODO: Erro é aqui
-    file = BZ2_bzReadOpen(&decompress_error, file_stream, 1, 0, NULL, 0);
-    if (decompress_error != BZ_OK) {
-        perror("HTPackage LocalInstall Error");
-        return ERROR_UNABLE_TO_DECOMPRESS;
-    }
-
-    while (decompress_error == BZ_OK) {
-        int read = BZ2_bzRead(&decompress_error, file, buffer, sizeof (buffer));
-        if (decompress_error == BZ_OK || decompress_error == BZ_STREAM_END) {
-            size_t nwritten = fwrite(buffer, 1, read, stdout);
-            if (nwritten != (size_t) read) {
-                fprintf(stderr, "E: short write\n");
-                return -1;
-            }
-        }
-    }
-
-    if (decompress_error != BZ_STREAM_END) {
-        fprintf(stderr, "E: bzip error after read: %d\n", decompress_error);
+    if (tar_open(&t, filename, O_RDONLY, 0, 0, TAR_GNU) == -1) {
+        fprintf(stderr, "tar_open(): %s\n", strerror(errno));
         return -1;
     }
 
-    BZ2_bzReadClose(&decompress_error, file);
+    if (tar_extract_all(t, rootdir) != 0) {
+        fprintf(stderr, "tar_extract_all(): %s\n", strerror(errno));
+        return -1;
+    }
+
+    if (tar_close(t) != 0) {
+        fprintf(stderr, "tar_close(): %s\n", strerror(errno));
+        return -1;
+    }
+
     return 0;
 }
 

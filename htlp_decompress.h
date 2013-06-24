@@ -23,6 +23,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <bzlib.h>
+#include <zlib.h>
+#include <libtar.h>
 #include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
