@@ -17,7 +17,3 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "htlp_database.h"
-
-int htlp_database_openConnection(database* db) {
-    
-}
