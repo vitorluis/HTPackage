@@ -29,7 +29,7 @@ int htlp_localinstall_main(Package* package) {
     if (htlp_decompress_copy_file("/home/vitor/teste.tar.bz2") == COPY_FILE_SUCCESSFULLY)
         printf("Arquivo Copiado com sucesso.\n");
     
-    //htlp_decompress_decompress("/var/cache/htpackage/package_to_install.htl");
+    htlp_decompress_decompress("/var/cache/htpackage/teste.tar.bz");
 
     //int file_exists = htlp_localinstall_file_exists(package->_local_filename);
 

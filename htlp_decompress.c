@@ -35,8 +35,8 @@ int htlp_decompress_copy_file(char * filename) {
 
     //Monta o path do arquivo de destino
     //Diretório do /var/cache/htpackage
-    filename_dest = (char *) malloc(sizeof (char)*150);
-    temp_filename_dest = (char *) malloc(sizeof (char)*150);
+    filename_dest = (char *) malloc(150);
+    temp_filename_dest = (char *) malloc(150);
     strcat(filename_dest, CACHE_PATH);
 
     //Monta o nome do arquivo de destino
@@ -81,9 +81,11 @@ int htlp_decompress_copy_file(char * filename) {
     close(file_descriptor_source);
 
     //Desaloca a memória
-    free(temp_filename_dest);
-    free(filename_dest);
-    free(filename);
+    //TODO: Por algum motivo da segfault no free()
+    //Desativando temporariamente
+    
+    //free(temp_filename_dest);
+    //free(filename_dest);
 
     //Retorna Sucesso
     return COPY_FILE_SUCCESSFULLY;
