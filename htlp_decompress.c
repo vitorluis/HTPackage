@@ -44,7 +44,7 @@ int htlp_decompress_copy_file(char * filename) {
     if (temp_filename_dest == NULL) {
         strcat(filename_dest, (const char *) temp_filename_dest);
     } else {
-        strcat(filename_dest, (const char *) temp_filename_dest+1);
+        strcat(filename_dest, (const char *) temp_filename_dest + 1);
     }
 
     //Chama a syscall que abre o arquivo origem
@@ -83,7 +83,7 @@ int htlp_decompress_copy_file(char * filename) {
     //Desaloca a memória
     //TODO: Por algum motivo da segfault no free()
     //Desativando temporariamente
-    
+
     //free(temp_filename_dest);
     //free(filename_dest);
 
@@ -96,7 +96,7 @@ int htlp_decompress_decompress(char * filename) {
     //Declara as vars
     TAR * tar_file;
     char rootdir[200];
-    strcpy(rootdir,"/var/cache/htpackage/");
+    strcpy(rootdir, "/var/cache/htpackage/");
 
     //Cria a pasta para jogar os arquivos dentro
 
@@ -104,8 +104,8 @@ int htlp_decompress_decompress(char * filename) {
         fprintf(stderr, "tar_open(): %s\n", strerror(errno));
         return -1;
     }
-
-    if (tar_extract_all(tar_file, "/var/cache/htpackage/") != 0) {
+    
+    if (tar_extract_all(tar_file, filename) != 0) {
         fprintf(stderr, "tar_extract_all(): %s\n", strerror(errno));
         return -1;
     }
