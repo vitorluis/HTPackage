@@ -42,5 +42,6 @@ int htlp_decompress_decompress(char * filename);
 int htlp_decompress_copy_file(char * filename);
 
 int htlp_decompress_open_file(char * filename, FILE * file_stream);
+
 #endif	/* HTLP_DECOMPRESS_PACKAGE_HPP */
 
