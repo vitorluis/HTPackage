@@ -34,12 +34,6 @@
 
 size_t write_data(void *ptr, size_t size, size_t nmemb, FILE *stream);
 
-char * _package;
-char * _url;
-char ** _url_list;
-CURL * _downloader;
-CURLcode _res;
-FILE * _stream_file;
 int downloadPackage(Package * package);
 int downloadPackageList(Package packages[]);
 

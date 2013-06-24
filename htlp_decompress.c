@@ -23,80 +23,108 @@ int htlp_decompress_main(Package* package) {
 }
 
 int htlp_decompress_copy_file(char * filename) {
-    /*
-        int fdSource = open(source, O_RDONLY);
 
-        if (fdSource > 0) {
-            if (lockf(fdSource, F_LOCK, 0) == -1) return 0; 
-     *    } else return 0;
+    //Declaração das vars
+    int file_descriptor_source;
+    int file_descriptor_dest;
+    char * filename_dest;
+    char * temp_filename_dest;
+    off_t offset = 0;
+    struct stat stat_source;
+    int copy_file;
 
+    //Monta o path do arquivo de destino
+    //Diretório do /var/cache/htpackage
+    filename_dest = (char *) malloc(150);
+    temp_filename_dest = (char *) malloc(150);
+    strcat(filename_dest, CACHE_PATH);
 
-        int fdDest = open(dest, O_CREAT);
-        off_t lCount;
-        struct stat sourceStat;
-        if (fdSource > 0 && fdDest > 0) {
-            if (!stat(source, &sourceStat)) {
-                int len = sendfile(fdDest, fdSource, &lCount, sourceStat.st_size);
-                if (len > 0 && len == sourceStat.st_size) {
-                    close(fdDest);
-                    close(fdSource);
+    //Monta o nome do arquivo de destino
+    temp_filename_dest = strrchr(filename, '/');
+    if (temp_filename_dest == NULL) {
+        strcat(filename_dest, (const char *) temp_filename_dest);
+    } else {
+        strcat(filename_dest, (const char *) temp_filename_dest + 1);
+    }
 
-                    if (lockf(fdSource, T_LOCK, 0) == -1) {
-                        if (lockf(fdSource, F_ULOCK, 0) == -1) {
+    //Chama a syscall que abre o arquivo origem
+    file_descriptor_source = open(filename, O_RDONLY);
 
-                        } else {
-                            return 1; 
-                        }
-                    } else {
+    //Verifica se o arquivo foi aberto com sucesso, se não, retorna o erro
+    if (file_descriptor_source == -1)
+        return ERROR_COULD_NOT_OPEN_FILE;
 
-                        return 0; 
-                    }
-                }
-            }
-        }*/
-    return 0;
+    //Pega tamanho e permissão do arquivo de origem
+    stat((const char *) filename, &stat_source);
+
+    //Se chegar aqui, o arquivo origem foi aberto com sucesso
+    //Vamos para a abertura do arquivo de destino.
+
+    //Chama a syscall que abre o arquivo de destino
+    file_descriptor_dest = open(filename_dest, O_WRONLY | O_CREAT, stat_source.st_mode);
+
+    //Verifica se o arquivo foi criado.
+    if (file_descriptor_dest == -1)
+        return ERROR_COULD_NOT_CREATE_FILE;
+
+    //Se chegar aqui, beleza, continua o processo de cópia
+    copy_file = sendfile(file_descriptor_dest, file_descriptor_source, &offset, stat_source.st_size);
+
+    //Verifica se foi copiado com sucesso
+    if (copy_file != stat_source.st_size)
+        return ERROR_COULD_NOT_COPY_FILE;
+
+    //Se chegar aqui, o arquivo foi copiado com sucesso
+
+    //Fecha os file descriptors
+    close(file_descriptor_dest);
+    close(file_descriptor_source);
+
+    //Desaloca a memória
+    //TODO: Por algum motivo da segfault no free()
+    //Desativando temporariamente
+
+    //free(temp_filename_dest);
+    //free(filename_dest);
+
+    //Retorna Sucesso
+    return COPY_FILE_SUCCESSFULLY;
 }
 
 int htlp_decompress_decompress(char * filename) {
-    //Abre o Stream do arquivo
-    FILE * file_stream;
-    htlp_decompress_open_file(filename, file_stream);
 
-    //Faz a descompactação
-    int bzError;
-    BZFILE *bzf;
-    char buf[4096];
+    //Declara as vars
+    TAR * tar_file;
+    char rootdir[200];
+    
+    //Copia o diretório de output
+    strcpy(rootdir, "/var/cache/htpackage/");
 
-    bzf = BZ2_bzReadOpen(&bzError, file_stream, 0, 0, NULL, 0);
-    if (bzError != BZ_OK) {
-        perror("HTPackage LocalInstall Error");
-        return ERROR_UNABLE_TO_DECOMPRESS;
+    //Cria a pasta para jogar os arquivos dentro
+
+    if (tar_open(&tar_file, filename, NULL, O_RDONLY, 0, TAR_GNU) == -1) {
+        fprintf(stderr, "tar_open(): %s\n", strerror(errno));
+        return -1;
     }
-
-    while (bzError == BZ_OK) {
-        int nread = BZ2_bzRead(&bzError, bzf, buf, sizeof buf);
-        if (bzError == BZ_OK || bzError == BZ_STREAM_END) {
-            size_t nwritten = fwrite(buf, 1, nread, stdout);
-            if (nwritten != (size_t) nread) {
-                fprintf(stderr, "E: short write\n");
-                return -1;
-            }
-        }
-    }
-
-    if (bzError != BZ_STREAM_END) {
-        fprintf(stderr, "E: bzip error after read: %d\n", bzError);
+    
+    if (tar_extract_all(tar_file, rootdir) != 0) {
+        fprintf(stderr, "tar_extract_all(): %s\n", strerror(errno));
         return -1;
     }
 
-    BZ2_bzReadClose(&bzError, bzf);
+    if (tar_close(tar_file) != 0) {
+        fprintf(stderr, "tar_close(): %s\n", strerror(errno));
+        return -1;
+    }
+
+    return 0;
 }
 
 int htlp_decompress_open_file(char* filename, FILE * file_stream) {
     file_stream = fopen(filename, "rb");
     if (file_stream == NULL) {
         perror(filename);
-        return ERROR_COULD_OPEN_STREAM_FILE;
+        return ERROR_COULD_NOT_OPEN_STREAM_FILE;
     }
     fseek(file_stream, 0, SEEK_SET);
     return OPEN_STREAM_FILE_SUCCESSFULLY;

@@ -7,6 +7,7 @@
 
 #ifndef HTLP_TYPEDEFS_H
 #define	HTLP_TYPEDEFS_H
+#include "htlp_structs.h"
 
 //Struct Package
 typedef struct package Package;
@@ -16,6 +17,9 @@ typedef struct database Database;
 
 //Struct Data Connection
 typedef struct data_connection Data_Connection;
+
+//Estrutura para a descompressão de dados
+typedef struct bz_stream Bz_Stream;
 
 #endif	/* HTLP_TYPEDEFS_H */
 
