@@ -33,7 +33,6 @@ int htlp_decompress_copy_file(Package * package) {
     //Declaração das vars
     int file_descriptor_source;
     int file_descriptor_dest;
-    char * filename_dest;
     char * temp_filename_dest;
     off_t offset = 0;
     struct stat stat_source;
@@ -41,7 +40,7 @@ int htlp_decompress_copy_file(Package * package) {
 
     //Monta o path do arquivo de destino
     //Diretório do /var/cache/htpackage
-    temp_filename_dest = (char *) malloc(150);
+    temp_filename_dest = (char *) malloc(50);
     strcat(package->_cache_filename, CACHE_PATH);
 
     //Monta o nome do arquivo de destino
@@ -85,12 +84,6 @@ int htlp_decompress_copy_file(Package * package) {
     close(file_descriptor_dest);
     close(file_descriptor_source);
 
-    //Desaloca a memória
-    //TODO: Por algum motivo da segfault no free()
-    //Desativando temporariamente
-
-    //free(temp_filename_dest);
-
     //Retorna Sucesso
     return COPY_FILE_SUCCESSFULLY;
 }
@@ -99,16 +92,16 @@ int htlp_decompress_decompress(Package * package) {
 
     //Declara as vars
     TAR * tar_file;
-    
+
     //Define o tipo de comparctação. NO caso zlib
     tartype_t gztype = {(openfunc_t) htlp_decompress_gzopen, (closefunc_t) gzclose, (readfunc_t) gzread, (writefunc_t) gzwrite};
 
     //Copia o diretório de output
-    strncat(package->_temp_dir,(const char *) package->_cache_filename, strlen(package->_cache_filename) - 4);
+    strncat(package->_temp_dir, (const char *) package->_cache_filename, strlen(package->_cache_filename) - 4);
 
     //Cria a pasta para jogar os arquivos dentro
     mkdir((const char *) package->_temp_dir, 0644);
-    
+
     //Faz os procedimentos de descompactação
     if (tar_open(&tar_file, package->_cache_filename, &gztype, O_RDONLY, 0, TAR_GNU) == -1)
         return ERROR_COULD_NOT_OPEN_FILE;
