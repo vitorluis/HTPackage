@@ -90,7 +90,6 @@ int htlp_decompress_copy_file(Package * package) {
     //Desativando temporariamente
 
     //free(temp_filename_dest);
-    //free(filename_dest);
 
     //Retorna Sucesso
     return COPY_FILE_SUCCESSFULLY;
