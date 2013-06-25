@@ -26,10 +26,12 @@ int htlp_localinstall_main(Package* package) {
      * 
      * Verifica se o arquivo existe
      */
-    if (htlp_decompress_copy_file("/home/fastway/teste.tar.gz") == COPY_FILE_SUCCESSFULLY)
+    int retorno = htlp_decompress_copy_file(package);
+    if (retorno == COPY_FILE_SUCCESSFULLY)
         printf("Arquivo Copiado com sucesso.\n");
-    
-    htlp_decompress_decompress("/var/cache/htpackage/teste.tar.gz");
+    else
+        printf("Erro: %d\n", retorno);
+    htlp_decompress_decompress(package->_cache_filename);
 
     //int file_exists = htlp_localinstall_file_exists(package->_local_filename);
 

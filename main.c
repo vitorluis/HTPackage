@@ -27,7 +27,7 @@
  * 
  */
 int main(int argc, char** argv) {
-    localInstallPackage("/home/vitor/test");
+    localInstallPackage("/home/fastway/Documents.tar.gz");
     return 0;
 }
 

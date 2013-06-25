@@ -20,15 +20,15 @@
 
 int htlp_decompress_main(Package* package) {
     //Copia o arquivo
-    if (htlp_decompress_copy_file(package->_local_filename) != COPY_FILE_SUCCESSFULLY)
+    if (htlp_decompress_copy_file(package) != COPY_FILE_SUCCESSFULLY)
         return ERROR_UNABLE_TO_DECOMPRESS;
-    
+
     //Se chegar aqui, Faz a descompressão
-    
-    
+
+
 }
 
-int htlp_decompress_copy_file(char * local_filename) {
+int htlp_decompress_copy_file(Package * package) {
 
     //Declaração das vars
     int file_descriptor_source;
@@ -41,33 +41,33 @@ int htlp_decompress_copy_file(char * local_filename) {
 
     //Monta o path do arquivo de destino
     //Diretório do /var/cache/htpackage
-    filename_dest = (char *) malloc(150);
     temp_filename_dest = (char *) malloc(150);
-    strcat(filename_dest, CACHE_PATH);
+    strcat(package->_cache_filename, CACHE_PATH);
 
     //Monta o nome do arquivo de destino
-    temp_filename_dest = strrchr(local_filename, '/');
+    temp_filename_dest = strrchr(package->_local_filename, '/');
     if (temp_filename_dest == NULL) {
-        strcat(filename_dest, (const char *) temp_filename_dest);
+        strcat(package->_cache_filename, (const char *) temp_filename_dest);
     } else {
-        strcat(filename_dest, (const char *) temp_filename_dest + 1);
+        strcat(package->_cache_filename, (const char *) temp_filename_dest + 1);
     }
 
     //Chama a syscall que abre o arquivo origem
-    file_descriptor_source = open(local_filename, O_RDONLY);
+    file_descriptor_source = open(package->_local_filename, O_RDONLY);
+
 
     //Verifica se o arquivo foi aberto com sucesso, se não, retorna o erro
     if (file_descriptor_source == -1)
         return ERROR_COULD_NOT_OPEN_FILE;
 
     //Pega tamanho e permissão do arquivo de origem
-    stat((const char *) local_filename, &stat_source);
+    stat((const char *) package->_local_filename, &stat_source);
 
     //Se chegar aqui, o arquivo origem foi aberto com sucesso
     //Vamos para a abertura do arquivo de destino.
 
     //Chama a syscall que abre o arquivo de destino
-    file_descriptor_dest = open(filename_dest, O_WRONLY | O_CREAT, stat_source.st_mode);
+    file_descriptor_dest = open(package->_cache_filename, O_WRONLY | O_CREAT, stat_source.st_mode);
 
     //Verifica se o arquivo foi criado.
     if (file_descriptor_dest == -1)
@@ -109,7 +109,7 @@ int htlp_decompress_decompress(char * cache_filename) {
 
     //Cria a pasta para jogar os arquivos dentro
 
-    if (tar_open(&tar_file, filename, &gztype, O_RDONLY, 0, TAR_GNU) == -1) {
+    if (tar_open(&tar_file, cache_filename, &gztype, O_RDONLY, 0, TAR_GNU) == -1) {
         fprintf(stderr, "tar_open(): %s\n", strerror(errno));
         return -1;
     }
