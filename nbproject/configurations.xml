@@ -107,11 +107,9 @@
       <compileType>
         <cTool>
           <developmentMode>5</developmentMode>
-          <architecture>2</architecture>
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
-          <architecture>2</architecture>
           <commandlineTool>gcc</commandlineTool>
         </ccTool>
         <fortranCompilerTool>
@@ -122,6 +120,12 @@
         </asmTool>
         <linkerTool>
           <commandlineTool>gcc</commandlineTool>
+          <linkerLibItems>
+            <linkerLibStdlibItem>DataCompression</linkerLibStdlibItem>
+            <linkerLibLibItem>tar</linkerLibLibItem>
+            <linkerLibLibItem>curl</linkerLibLibItem>
+            <linkerLibLibItem>bz2</linkerLibLibItem>
+          </linkerLibItems>
         </linkerTool>
       </compileType>
       <item path="htlp.c" ex="false" tool="1" flavor2="0">

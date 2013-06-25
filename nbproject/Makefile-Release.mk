@@ -45,11 +45,11 @@ OBJECTFILES= \
 
 
 # C Compiler Flags
-CFLAGS=-m64
+CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-m64
-CXXFLAGS=-m64
+CCFLAGS=
+CXXFLAGS=
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -58,7 +58,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-lz -ltar -lcurl -lbz2
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
