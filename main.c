@@ -27,7 +27,10 @@
  * 
  */
 int main(int argc, char** argv) {
-    localInstallPackage("/home/vitor/teste.htl");
+    if (argc > 1)
+        localInstallPackage(argv[1]);
+    else
+        showHelp();
     return 0;
 }
 

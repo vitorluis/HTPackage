@@ -26,26 +26,36 @@ int htlp_localinstall_main(Package* package) {
      * 
      * Verifica se o arquivo existe
      */
-   
 
-    //int file_exists = htlp_localinstall_file_exists(package->_local_filename);
-
-    //if (file_exists == ERROR_FILE_NOT_FOUND) {
-    //    perror("HTPackage LocalInstall Error");
-    //    return INSTALLATION_FAILED;
-    //}
+    if (htlp_localinstall_file_exists(package->_local_filename) == ERROR_FILE_NOT_FOUND) {
+        perror("HTPackage LocalInstall Error");
+        return INSTALLATION_FAILED;
+    }
 
     /*
      * Se o arquivo existe, vamos para o proximo passo
      * Que é descompactar o arquivo
      */
 
+    if (htlp_localinstall_decompress(package) != DECOMPRESS_SUCCESSFULLY) {
+        perror("HTPackage LocalInstall Error");
+        return INSTALLATION_FAILED;
+    }
+
 
     return INSTALLATION_SUCCESSFULLY;
 }
 
 int htlp_localinstall_file_exists(char * filename) {
-    if (access(filename, F_OK)) {
+    if (access(filename, F_OK))
         return ERROR_FILE_NOT_FOUND;
-    }
+}
+
+int htlp_localinstall_decompress(Package* package) {
+    //Chama a função principal responsavel pela descompactação
+    if (htlp_decompress_main(package) !=  DECOMPRESS_SUCCESSFULLY)
+        return ERROR_UNABLE_TO_DECOMPRESS;
+    
+    //Se tudo der certo, manda um OK
+    return DECOMPRESS_SUCCESSFULLY;
 }

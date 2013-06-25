@@ -66,5 +66,5 @@ int localInstallPackage(char* filename) {
 }
 
 void showHelp() {
-
+    printf("Ente com algum parametro.\n");
 }

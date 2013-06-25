@@ -34,7 +34,7 @@ int htlp_localinstall_main(Package * package);
 
 int htlp_localisntall_file_exists(char * filename);
 
-int htlp_localinstall_decompress(char * filename);
+int htlp_localinstall_decompress(Package * package);
 
 int htlp_localinstall_parse_conf(char * filename);
 
