@@ -18,9 +18,9 @@ struct package {
 };
 
 struct data_connection {
-    char * _database_name;
-    char * _database_user;
-    char * _database_passwd;
+    char _database_name[20];
+    char * _database_user[20];
+    char * _database_passwd[20];
     int port;
 };
 
