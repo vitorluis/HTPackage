@@ -12,6 +12,7 @@ struct package {
     char _name_package[100];
     char _url_package[100];
     char _local_filename[100];
+    char _cache_filename[100];
     int _package_size;
 };
 
