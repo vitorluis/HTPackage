@@ -103,7 +103,7 @@ int htlp_decompress_decompress(char * filename) {
 
     //Cria a pasta para jogar os arquivos dentro
 
-    if (tar_open(&tar_file, filename, NULL, O_RDONLY, 0, TAR_GNU) == -1) {
+    if (tar_open(&tar_file, filename, &gztype, O_RDONLY, 0, TAR_GNU) == -1) {
         fprintf(stderr, "tar_open(): %s\n", strerror(errno));
         return -1;
     }
