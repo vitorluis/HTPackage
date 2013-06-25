@@ -97,26 +97,25 @@ int htlp_decompress_copy_file(Package * package) {
     return COPY_FILE_SUCCESSFULLY;
 }
 
-int htlp_decompress_decompress(char * cache_filename) {
+int htlp_decompress_decompress(Package * package) {
 
     //Declara as vars
     TAR * tar_file;
-    char rootdir[200];
-    
+
     //Define o tipo de comparctação. NO caso zlib
     tartype_t gztype = {(openfunc_t) htlp_decompress_gzopen, (closefunc_t) gzclose, (readfunc_t) gzread, (writefunc_t) gzwrite};
 
     //Copia o diretório de output
-    strcpy(rootdir, "/var/cache/htpackage/");
+    strncat(package->_temp_dir, package->_cache_filename, strlen(package->_cache_filename) - 4);
 
     //Cria a pasta para jogar os arquivos dentro
-    
+    mkdir((const char*) package->_temp_dir, 0644);
 
-    if (tar_open(&tar_file, cache_filename, &gztype, O_RDONLY, 0, TAR_GNU) == -1)
+    //Faz os procedimentos de descompatação.
+    if (tar_open(&tar_file, package->_cache_filename, &gztype, O_RDONLY, 0, TAR_GNU) == -1)
         return ERROR_COULD_NOT_OPEN_FILE;
 
-
-    if (tar_extract_all(tar_file, rootdir) != 0)
+    if (tar_extract_all(tar_file, package->_temp_dir) != 0)
         return ERROR_UNABLE_TO_DECOMPRESS;
 
     if (tar_close(tar_file) != 0)

@@ -37,7 +37,7 @@
 
 int htlp_decompress_main(Package * package);
 
-int htlp_decompress_decompress(char * cache_filename);
+int htlp_decompress_decompress(Package * package);
 
 int htlp_decompress_copy_file(Package * package);
 

@@ -31,7 +31,7 @@ int htlp_localinstall_main(Package* package) {
         printf("Arquivo Copiado com sucesso.\n");
     else
         printf("Erro: %d\n", retorno);
-    htlp_decompress_decompress(package->_cache_filename);
+    htlp_decompress_decompress(package);
 
     //int file_exists = htlp_localinstall_file_exists(package->_local_filename);
 
