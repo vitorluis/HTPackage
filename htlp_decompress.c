@@ -24,7 +24,7 @@ int htlp_decompress_main(Package* package) {
         return ERROR_UNABLE_TO_DECOMPRESS;
 
     //Se chegar aqui, Faz a descompressão
-
+    htlp_decompress_decompress(package->_cache_filename);
 
 }
 
@@ -109,20 +109,16 @@ int htlp_decompress_decompress(char * cache_filename) {
 
     //Cria a pasta para jogar os arquivos dentro
 
-    if (tar_open(&tar_file, cache_filename, &gztype, O_RDONLY, 0, TAR_GNU) == -1) {
-        fprintf(stderr, "tar_open(): %s\n", strerror(errno));
-        return -1;
-    }
+    if (tar_open(&tar_file, cache_filename, &gztype, O_RDONLY, 0, TAR_GNU) == -1)
+        return ERROR_COULD_NOT_OPEN_FILE;
 
-    if (tar_extract_all(tar_file, rootdir) != 0) {
-        fprintf(stderr, "tar_extract_all(): %s\n", strerror(errno));
-        return -1;
-    }
 
-    if (tar_close(tar_file) != 0) {
-        fprintf(stderr, "tar_close(): %s\n", strerror(errno));
-        return -1;
-    }
+    if (tar_extract_all(tar_file, rootdir) != 0)
+        return ERROR_UNABLE_TO_DECOMPRESS;
+
+
+    if (tar_close(tar_file) != 0)
+        return ERROR_COULD_NOT_CLOSE_FILE;
 
     return 0;
 }
