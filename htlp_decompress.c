@@ -96,7 +96,8 @@ int htlp_decompress_decompress(char * filename) {
     //Declara as vars
     TAR * tar_file;
     char rootdir[200];
-    
+    tartype_t gztype = {(openfunc_t) htlp_decompress_gzopen, (closefunc_t) gzclose, (readfunc_t) gzread, (writefunc_t) gzwrite};
+
     //Copia o diretório de output
     strcpy(rootdir, "/var/cache/htpackage/");
 
@@ -106,7 +107,7 @@ int htlp_decompress_decompress(char * filename) {
         fprintf(stderr, "tar_open(): %s\n", strerror(errno));
         return -1;
     }
-    
+
     if (tar_extract_all(tar_file, rootdir) != 0) {
         fprintf(stderr, "tar_extract_all(): %s\n", strerror(errno));
         return -1;
@@ -128,4 +129,38 @@ int htlp_decompress_open_file(char* filename, FILE * file_stream) {
     }
     fseek(file_stream, 0, SEEK_SET);
     return OPEN_STREAM_FILE_SUCCESSFULLY;
+}
+
+int htlp_decompress_gzopen(char *pathname, int oflags, int mode) {
+    char *gzoflags;
+    gzFile gzf;
+    int fd;
+
+    switch (oflags & O_ACCMODE) {
+        case O_WRONLY:
+            gzoflags = "wb";
+            break;
+        case O_RDONLY:
+            gzoflags = "rb";
+            break;
+        default:
+        case O_RDWR:
+            errno = EINVAL;
+            return -1;
+    }
+
+    fd = open(pathname, oflags, mode);
+    if (fd == -1)
+        return -1;
+
+    if ((oflags & O_CREAT) && fchmod(fd, mode))
+        return -1;
+
+    gzf = gzdopen(fd, gzoflags);
+    if (!gzf) {
+        errno = ENOMEM;
+        return -1;
+    }
+
+    return (int) gzf;
 }
