@@ -19,10 +19,16 @@
 #include "htlp_decompress.h"
 
 int htlp_decompress_main(Package* package) {
-
+    //Copia o arquivo
+    if (htlp_decompress_copy_file(package->_local_filename) != COPY_FILE_SUCCESSFULLY)
+        return ERROR_UNABLE_TO_DECOMPRESS;
+    
+    //Se chegar aqui, Faz a descompressão
+    
+    
 }
 
-int htlp_decompress_copy_file(char * filename) {
+int htlp_decompress_copy_file(char * local_filename) {
 
     //Declaração das vars
     int file_descriptor_source;
@@ -40,7 +46,7 @@ int htlp_decompress_copy_file(char * filename) {
     strcat(filename_dest, CACHE_PATH);
 
     //Monta o nome do arquivo de destino
-    temp_filename_dest = strrchr(filename, '/');
+    temp_filename_dest = strrchr(local_filename, '/');
     if (temp_filename_dest == NULL) {
         strcat(filename_dest, (const char *) temp_filename_dest);
     } else {
@@ -48,14 +54,14 @@ int htlp_decompress_copy_file(char * filename) {
     }
 
     //Chama a syscall que abre o arquivo origem
-    file_descriptor_source = open(filename, O_RDONLY);
+    file_descriptor_source = open(local_filename, O_RDONLY);
 
     //Verifica se o arquivo foi aberto com sucesso, se não, retorna o erro
     if (file_descriptor_source == -1)
         return ERROR_COULD_NOT_OPEN_FILE;
 
     //Pega tamanho e permissão do arquivo de origem
-    stat((const char *) filename, &stat_source);
+    stat((const char *) local_filename, &stat_source);
 
     //Se chegar aqui, o arquivo origem foi aberto com sucesso
     //Vamos para a abertura do arquivo de destino.
@@ -91,7 +97,7 @@ int htlp_decompress_copy_file(char * filename) {
     return COPY_FILE_SUCCESSFULLY;
 }
 
-int htlp_decompress_decompress(char * filename) {
+int htlp_decompress_decompress(char * cache_filename) {
 
     //Declara as vars
     TAR * tar_file;

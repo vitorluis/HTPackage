@@ -37,9 +37,9 @@
 
 int htlp_decompress_main(Package * package);
 
-int htlp_decompress_decompress(char * filename);
+int htlp_decompress_decompress(char * cache_filename);
 
-int htlp_decompress_copy_file(char * filename);
+int htlp_decompress_copy_file(char * local_filename);
 
 int htlp_decompress_open_file(char * filename, FILE * file_stream);
 
