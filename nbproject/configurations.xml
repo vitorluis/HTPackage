@@ -58,6 +58,8 @@
         <linkerTool>
           <linkerLibItems>
             <linkerOptionItem>`pkg-config --libs libcurl`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs zlib`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs sqlite3`</linkerOptionItem>
             <linkerLibLibItem>tar</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
