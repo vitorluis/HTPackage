@@ -58,7 +58,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=`pkg-config --libs libcurl` `pkg-config --libs zlib` `pkg-config --libs sqlite3` -ltar  
+LDLIBSOPTIONS=`pkg-config --libs libcurl` -ltar  
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -71,37 +71,37 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/htpackage: ${OBJECTFILES}
 ${OBJECTDIR}/htlp.o: htlp.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags libcurl` `pkg-config --cflags zlib` `pkg-config --cflags sqlite3`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp.o htlp.c
+	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp.o htlp.c
 
 ${OBJECTDIR}/htlp_database.o: htlp_database.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags libcurl` `pkg-config --cflags zlib` `pkg-config --cflags sqlite3`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_database.o htlp_database.c
+	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_database.o htlp_database.c
 
 ${OBJECTDIR}/htlp_decompress.o: htlp_decompress.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g `pkg-config --cflags libcurl` `pkg-config --cflags zlib` `pkg-config --cflags sqlite3`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_decompress.o htlp_decompress.c
+	$(COMPILE.c) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_decompress.o htlp_decompress.c
 
 ${OBJECTDIR}/htlp_download.o: htlp_download.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags libcurl` `pkg-config --cflags zlib` `pkg-config --cflags sqlite3`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_download.o htlp_download.c
+	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_download.o htlp_download.c
 
 ${OBJECTDIR}/htlp_install.o: htlp_install.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags libcurl` `pkg-config --cflags zlib` `pkg-config --cflags sqlite3`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_install.o htlp_install.c
+	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_install.o htlp_install.c
 
 ${OBJECTDIR}/htlp_localinstall.o: htlp_localinstall.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.c) -g `pkg-config --cflags libcurl` `pkg-config --cflags zlib` `pkg-config --cflags sqlite3`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_localinstall.o htlp_localinstall.c
+	$(COMPILE.c) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_localinstall.o htlp_localinstall.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g `pkg-config --cflags libcurl` `pkg-config --cflags zlib` `pkg-config --cflags sqlite3`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
+	$(COMPILE.cc) -g `pkg-config --cflags libcurl`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
 
 # Subprojects
 .build-subprojects:
