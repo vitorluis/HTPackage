@@ -26,12 +26,7 @@ int htlp_localinstall_main(Package* package) {
      * 
      * Verifica se o arquivo existe
      */
-    int retorno = htlp_decompress_copy_file(package);
-    if (retorno == COPY_FILE_SUCCESSFULLY)
-        printf("Arquivo Copiado com sucesso.\n");
-    else
-        printf("Erro: %d\n", retorno);
-    htlp_decompress_decompress(package);
+     
 
     //int file_exists = htlp_localinstall_file_exists(package->_local_filename);
 

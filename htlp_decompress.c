@@ -81,7 +81,6 @@ int htlp_decompress_copy_file(Package * package) {
         return ERROR_COULD_NOT_COPY_FILE;
 
     //Se chegar aqui, o arquivo foi copiado com sucesso
-
     //Fecha os file descriptors
     close(file_descriptor_dest);
     close(file_descriptor_source);
