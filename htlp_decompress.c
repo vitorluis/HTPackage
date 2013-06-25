@@ -122,16 +122,6 @@ int htlp_decompress_decompress(Package * package) {
     return DECOMPRESS_SUCCESSFULLY;
 }
 
-int htlp_decompress_open_file(char* filename, FILE * file_stream) {
-    file_stream = fopen(filename, "rb");
-    if (file_stream == NULL) {
-        perror(filename);
-        return ERROR_COULD_NOT_OPEN_STREAM_FILE;
-    }
-    fseek(file_stream, 0, SEEK_SET);
-    return OPEN_STREAM_FILE_SUCCESSFULLY;
-}
-
 int htlp_decompress_gzopen(char *pathname, int oflags, int mode) {
     char *gzoflags;
     gzFile gzf;

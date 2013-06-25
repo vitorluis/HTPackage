@@ -41,8 +41,6 @@ int htlp_decompress_decompress(Package * package);
 
 int htlp_decompress_copy_file(Package * package);
 
-int htlp_decompress_open_file(char * filename, FILE * file_stream);
-
 int htlp_decompress_gzopen(char *pathname, int oflags, int mode);
 
 #endif	/* HTLP_DECOMPRESS_PACKAGE_HPP */
