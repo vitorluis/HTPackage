@@ -103,13 +103,15 @@ int htlp_decompress_decompress(Package * package) {
     mkdir((const char *) package->_temp_dir, 0644);
 
     //Faz os procedimentos de descompactação
+    //Abre o arquivo tar
     if (tar_open(&tar_file, package->_cache_filename, &gztype, O_RDONLY, 0, TAR_GNU) == -1)
         return ERROR_COULD_NOT_OPEN_FILE;
 
-
+    //Faz a extração dos arquivos
     if (tar_extract_all(tar_file, package->_temp_dir) != 0)
         return ERROR_UNABLE_TO_DECOMPRESS;
 
+    //Fecha o arquivo tar
     if (tar_close(tar_file) != 0)
         return ERROR_COULD_NOT_CLOSE_FILE;
 
