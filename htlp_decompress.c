@@ -101,7 +101,6 @@ int htlp_decompress_decompress(Package * package) {
 
     //Declara as vars
     TAR * tar_file;
-
     
     //Define o tipo de comparctação. NO caso zlib
     tartype_t gztype = {(openfunc_t) htlp_decompress_gzopen, (closefunc_t) gzclose, (readfunc_t) gzread, (writefunc_t) gzwrite};
@@ -110,8 +109,9 @@ int htlp_decompress_decompress(Package * package) {
     strncat(package->_temp_dir,(const char *) package->_cache_filename, strlen(package->_cache_filename) - 4);
 
     //Cria a pasta para jogar os arquivos dentro
+    mkdir((const char *) package->_temp_dir, 0644);
     
-
+    //Faz os procedimentos de descompactação
     if (tar_open(&tar_file, package->_cache_filename, &gztype, O_RDONLY, 0, TAR_GNU) == -1)
         return ERROR_COULD_NOT_OPEN_FILE;
 
