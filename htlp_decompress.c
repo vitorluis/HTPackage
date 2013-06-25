@@ -19,13 +19,17 @@
 #include "htlp_decompress.h"
 
 int htlp_decompress_main(Package* package) {
-    //Copia o arquivo
+    
+    //Copia o arquivo para o diretório de cache
     if (htlp_decompress_copy_file(package) != COPY_FILE_SUCCESSFULLY)
-        return ERROR_UNABLE_TO_DECOMPRESS;
-
+        return ERROR_COULD_NOT_COPY_FILE;
+    
     //Se chegar aqui, Faz a descompressão
-
-
+    if (htlp_decompress_decompress(package) != DECOMPRESS_SUCCESSFULLY)
+        return ERROR_UNABLE_TO_DECOMPRESS;
+    
+    //Se chegar aqui tudo deu certo
+    return DECOMPRESS_SUCCESSFULLY;
 }
 
 int htlp_decompress_copy_file(Package * package) {
