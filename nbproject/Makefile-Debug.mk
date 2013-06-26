@@ -41,6 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/htlp_download.o \
 	${OBJECTDIR}/htlp_install.o \
 	${OBJECTDIR}/htlp_localinstall.o \
+	${OBJECTDIR}/htlp_parse_conf.o \
 	${OBJECTDIR}/main.o
 
 
@@ -97,6 +98,11 @@ ${OBJECTDIR}/htlp_localinstall.o: htlp_localinstall.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.c) -g `pkg-config --cflags libcurl` `pkg-config --cflags zlib` `pkg-config --cflags sqlite3`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_localinstall.o htlp_localinstall.c
+
+${OBJECTDIR}/htlp_parse_conf.o: htlp_parse_conf.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g `pkg-config --cflags libcurl` `pkg-config --cflags zlib` `pkg-config --cflags sqlite3`   -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_parse_conf.o htlp_parse_conf.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
