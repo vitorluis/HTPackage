@@ -44,7 +44,6 @@ int htlp_decompress_copy_file(Package * package) {
 
     //Monta o path do arquivo de destino
     //Diretório do /var/cache/htpackage
-    temp_filename_dest = (char *) malloc(50);
     strcat(package->_cache_filename, CACHE_PATH);
 
     //Monta o nome do arquivo de destino
