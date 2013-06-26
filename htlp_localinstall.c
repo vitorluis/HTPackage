@@ -1,4 +1,3 @@
-
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
  * htlp_localinstall.c
@@ -42,7 +41,10 @@ int htlp_localinstall_main(Package* package) {
         return INSTALLATION_FAILED;
     }
 
-
+    /*
+     * Agora faz o parse do arquivo de configuração do pacote
+     * Que se encontra no diretório htlp
+     */
     return INSTALLATION_SUCCESSFULLY;
 }
 
