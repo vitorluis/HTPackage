@@ -7,6 +7,8 @@
 #ifndef HTLP_STRUCTS_H
 #define	HTLP_STRUCTS_H
 #include <sqlite3.h>
+#include <ctype.h>
+#include <sys/types.h>
 
 struct package {
     char _name_package[100];
@@ -28,20 +30,16 @@ struct database {
     sqlite3 * _conn;
 };
 
-struct bz_stream {
-    char *next_in;
-    unsigned int avail_in;
-    unsigned int total_in;
-
-    char *next_out;
-    unsigned int avail_out;
-    unsigned int total_out;
-
-    void *state;
-
-    void *(*bzalloc)(void *, int, int);
-    void (*bzfree)(void *, void *);
-    void *opaque;
+struct config {
+    char _name_package[50];
+    char _version[10];
+    char _author[50];
+    size_t _size;
+    char _requires[30];
+    char _conflicts[30];
+    char * pre_install[50];
+    char * install[50];
+    char * post_install[50];
 };
 
 #endif	/* HTLP_STRUCTS_H */
