@@ -18,5 +18,8 @@ typedef struct database Database;
 //Struct Data Connection
 typedef struct data_connection Data_Connection;
 
+//Struct Config
+typedef struct config Config;
+
 #endif	/* HTLP_TYPEDEFS_H */
 
