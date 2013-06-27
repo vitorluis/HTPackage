@@ -12,26 +12,6 @@
 #include <ctype.h>
 #include <sys/types.h>
 
-struct package {
-    char _name_package[100];
-    char _url_package[100];
-    char _local_filename[100];
-    char _cache_filename[100];
-    char _temp_dir[100];
-    int _package_size;
-};
-
-struct data_connection {
-    char _database_name[20];
-    char * _database_user[20];
-    char * _database_passwd[20];
-    int port;
-};
-
-struct database {
-    sqlite3 * _conn;
-};
-
 struct config {
     FILE * _file;
     char _name_package[50];
@@ -45,5 +25,26 @@ struct config {
     char * post_install[50];
 };
 
+
+struct package {
+    char _name_package[100];
+    char _url_package[100];
+    char _local_filename[100];
+    char _cache_filename[100];
+    char _temp_dir[100];
+    int _package_size;
+    struct config _config;
+};
+
+struct data_connection {
+    char _database_name[20];
+    char * _database_user[20];
+    char * _database_passwd[20];
+    int port;
+};
+
+struct database {
+    sqlite3 * _conn;
+};
 #endif	/* HTLP_STRUCTS_H */
 
