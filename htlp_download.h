@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*-  */
 /*
- * htlp_download.hpp
+ * htlp_download.h
  * Copyright (C) 2013 Vitor Luis V. Neto <vitor@softwaredevelopment.com.br>
  * 
  * HTPackage is free software: you can redistribute it and/or modify it
