@@ -11,6 +11,7 @@
       <itemPath>htlp_download.h</itemPath>
       <itemPath>htlp_install.h</itemPath>
       <itemPath>htlp_localinstall.h</itemPath>
+      <itemPath>htlp_parse_conf.h</itemPath>
       <itemPath>htlp_search.h</itemPath>
       <itemPath>htlp_structs.h</itemPath>
       <itemPath>htlp_typedefs.h</itemPath>
@@ -28,6 +29,7 @@
       <itemPath>htlp_download.c</itemPath>
       <itemPath>htlp_install.c</itemPath>
       <itemPath>htlp_localinstall.c</itemPath>
+      <itemPath>htlp_parse_conf.c</itemPath>
       <itemPath>main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
