@@ -33,5 +33,9 @@
 int htlp_parse_conf_main(Config * conf);
 
 int htlp_parse_conf_open_file(char * temp_dir);
+
+int htlp_parse_conf_parse(Config * conf);
+
+const char * htlp_parse_conf_get_elem(Config * conf, const char * element);
 #endif	/* HTLP_PARSE_CONF_H */
 
