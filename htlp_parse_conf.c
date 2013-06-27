@@ -19,16 +19,34 @@
  */
 
 #include "htlp_parse_conf.h"
-#include "htlp_structs.h"
-#include "htlp_typedefs.h"
 
 int htlp_parse_conf_main(Package * package, Config * conf) {
     /*
      * Função principal para ler a configuração do pacote.
+     * Abre o arquivo de configuração
      */
-    htlp_parse_conf_open_file(package->_temp_dir);
+    htlp_parse_conf_open_file(conf, package->_temp_dir);
 }
 
 int htlp_parse_conf_open_file(Config * conf, char * temp_dir) {
+    //Faz a abertura do arquivo
+    conf->_file = fopen(strcat(temp_dir, "htlp/package.conf"), "r");
+
+    //Verifica se o arquivo foi aberto com sucesso
+    if (conf->_file == NULL)
+        return ERROR_COULD_NOT_OPEN_STREAM_FILE;
+
+    //Se chegar aqui, beleza, o arquivo foi aberto com sucesso
+    return OPEN_STREAM_FILE_SUCCESSFULLY;
+}
+
+int htlp_parse_conf_parse(Config* conf) {
+    //Declaração das vars
+    config_t * config;
+
+    //Abre o arquivo e faz a leitura
+    if (!config_read(config, conf->_file))
+        return;
     
+    //Agora faz a captura dos valores e coloca nos atributos da struct
 }
