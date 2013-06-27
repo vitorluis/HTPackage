@@ -14,9 +14,11 @@
 #include <unistd.h>
 #include <errno.h>
 #include <libconfig.h>
+#include "htlp_structs.h"
+#include "htlp_typedefs.h"
 
-int htlp_parse_conf_main();
+int htlp_parse_conf_main(Config * conf);
 
-int htlp_parse_conf_open_file();
+int htlp_parse_conf_open_file(char * temp_dir);
 #endif	/* HTLP_PARSE_CONF_H */
 
