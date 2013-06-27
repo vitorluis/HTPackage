@@ -59,10 +59,10 @@
         </ccTool>
         <linkerTool>
           <linkerLibItems>
-            <linkerOptionItem>`pkg-config --libs libcurl`</linkerOptionItem>
             <linkerLibLibItem>tar</linkerLibLibItem>
-            <linkerLibStdlibItem>DataCompression</linkerLibStdlibItem>
             <linkerLibLibItem>curl</linkerLibLibItem>
+            <linkerLibLibItem>config</linkerLibLibItem>
+            <linkerLibLibItem>z</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
