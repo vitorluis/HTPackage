@@ -31,6 +31,7 @@ struct database {
 };
 
 struct config {
+    FILE * _file;
     char _name_package[50];
     char _version[10];
     char _author[50];
