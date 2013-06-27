@@ -27,12 +27,13 @@
 #include <unistd.h>
 #include <errno.h>
 #include <libconfig.h>
+#include "htlp_defines.h"
 #include "htlp_structs.h"
 #include "htlp_typedefs.h"
 
-int htlp_parse_conf_main(Config * conf);
+int htlp_parse_conf_main(Package * package, Config * conf);
 
-int htlp_parse_conf_open_file(char * temp_dir);
+int htlp_parse_conf_open_file(Config * conf, char * temp_dir);
 
 int htlp_parse_conf_parse(Config * conf);
 

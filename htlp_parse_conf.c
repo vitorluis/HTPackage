@@ -19,3 +19,16 @@
  */
 
 #include "htlp_parse_conf.h"
+#include "htlp_structs.h"
+#include "htlp_typedefs.h"
+
+int htlp_parse_conf_main(Package * package, Config * conf) {
+    /*
+     * Função principal para ler a configuração do pacote.
+     */
+    htlp_parse_conf_open_file(package->_temp_dir);
+}
+
+int htlp_parse_conf_open_file(Config * conf, char * temp_dir) {
+    
+}
