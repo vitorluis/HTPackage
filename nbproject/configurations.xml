@@ -63,6 +63,7 @@
             <linkerLibLibItem>curl</linkerLibLibItem>
             <linkerLibLibItem>config</linkerLibLibItem>
             <linkerLibLibItem>z</linkerLibLibItem>
+            <linkerLibLibItem>pthread</linkerLibLibItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
