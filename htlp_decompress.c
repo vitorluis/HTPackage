@@ -18,18 +18,28 @@
  */
 #include "htlp_decompress.h"
 
-int htlp_decompress_main(Package* package) {
-    
+void * htlp_decompress_main(void * package) {
+
+    //Status da Ação
+    int * status = malloc(sizeof (int));
+
+    //Seta o erro geral
+    *status = ERROR_GENERAL_CODE;
+
     //Copia o arquivo para o diretório de cache
-    if (htlp_decompress_copy_file(package) != COPY_FILE_SUCCESSFULLY)
-        return ERROR_COULD_NOT_COPY_FILE;
-    
+    if (htlp_decompress_copy_file(package) != COPY_FILE_SUCCESSFULLY) {
+        *status = ERROR_COULD_NOT_COPY_FILE;
+        pthread_exit(status);
+    }
+
     //Se chegar aqui, Faz a descompressão
-    if (htlp_decompress_decompress(package) != DECOMPRESS_SUCCESSFULLY)
-        return ERROR_UNABLE_TO_DECOMPRESS;
-    
+    if (htlp_decompress_decompress(package) != DECOMPRESS_SUCCESSFULLY) {
+        *status = ERROR_UNABLE_TO_DECOMPRESS;
+        pthread_exit(status);
+    }
     //Se chegar aqui tudo deu certo
-    return DECOMPRESS_SUCCESSFULLY;
+    *status = DECOMPRESS_SUCCESSFULLY;
+    pthread_exit(status);
 }
 
 int htlp_decompress_copy_file(Package * package) {

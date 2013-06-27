@@ -54,10 +54,20 @@ int htlp_localinstall_file_exists(char * filename) {
 }
 
 int htlp_localinstall_decompress(Package* package) {
+
+    //ID da Thread
+    pthread_t thread;
+    void * status;
+
+
     //Chama a função principal responsavel pela descompactação
-    if (htlp_decompress_main(package) !=  DECOMPRESS_SUCCESSFULLY)
+    pthread_create(&thread, NULL, htlp_decompress_main, (void*)package);
+    pthread_join(thread, &status);
+
+    if (*((int*) status) != DECOMPRESS_SUCCESSFULLY)
         return ERROR_UNABLE_TO_DECOMPRESS;
-    
+
+
     //Se tudo der certo, manda um OK
     return DECOMPRESS_SUCCESSFULLY;
 }
