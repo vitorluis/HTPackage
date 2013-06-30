@@ -162,5 +162,5 @@ int htlp_decompress_gzopen(char *pathname, int oflags, int mode) {
         return -1;
     }
 
-    return (int) gzf;
+    return 0;
 }

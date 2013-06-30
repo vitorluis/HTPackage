@@ -18,6 +18,14 @@
  */
 #include "htlp_localinstall.h"
 
+int htlp_localinstall_file_exists(char * filename) {
+    if (access(filename, F_OK))
+        return ERROR_FILE_NOT_FOUND;
+    
+    //Se o arquivo existe, retorna OK
+    return FILE_EXISTS;
+}
+
 int htlp_localinstall_main(Package* package) {
 
     /*
@@ -46,11 +54,6 @@ int htlp_localinstall_main(Package* package) {
      * Que se encontra no diretório htlp
      */
     return INSTALLATION_SUCCESSFULLY;
-}
-
-int htlp_localinstall_file_exists(char * filename) {
-    if (access(filename, F_OK))
-        return ERROR_FILE_NOT_FOUND;
 }
 
 int htlp_localinstall_decompress(Package* package) {

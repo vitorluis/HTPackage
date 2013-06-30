@@ -54,6 +54,9 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <commandLine>-Wall</commandLine>
+        </cTool>
         <ccTool>
           <commandlineTool>gcc</commandlineTool>
         </ccTool>

@@ -14,15 +14,15 @@
 
 struct config {
     FILE * _file;
-    char _name_package[50];
-    char _version[10];
-    char _author[50];
-    size_t _size;
-    char _requires[30];
-    char _conflicts[30];
-    char * pre_install[50];
-    char * install[50];
-    char * post_install[50];
+    const char * _name_package;
+    const char * _version;
+    const char * _author;
+    int _size;
+    const char * _requires;
+    const char * _conflicts;
+    const char * _pre_install;
+    const char * _install;
+    const char * _post_install;
 };
 
 

@@ -26,6 +26,8 @@ int htlp_parse_conf_main(Package * package, Config * conf) {
      * Abre o arquivo de configuração
      */
     htlp_parse_conf_open_file(conf, package->_temp_dir);
+    
+    return PARSE_COMPLETE;
 }
 
 int htlp_parse_conf_open_file(Config * conf, char * temp_dir) {
@@ -40,13 +42,18 @@ int htlp_parse_conf_open_file(Config * conf, char * temp_dir) {
     return OPEN_STREAM_FILE_SUCCESSFULLY;
 }
 
-int htlp_parse_conf_parse(Config* conf) {
+int htlp_parse_conf_parse(Package * package, Config* conf) {
     //Declaração das vars
-    config_t * config;
+    config_t config;
 
     //Abre o arquivo e faz a leitura
-    if (!config_read(config, conf->_file))
-        return;
-    
+    if (!config_read(&config, conf->_file))
+        return ERROR_COULD_NOT_READ_CONF_FILE;
+
     //Agora faz a captura dos valores e coloca nos atributos da struct
+    //Le o nome do pacote
+    if (!config_lookup_string(&config, "information.name", &conf->_name_package))
+        return ERROR_PARSE_FAIL;
+    
+    return PARSE_COMPLETE;
 }

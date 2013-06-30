@@ -55,6 +55,9 @@
 #define ERROR_COULD_NOT_CLOSE_FILE 122
 #define ERROR_COULD_NOT_READ_CONF_FILE 124
 
+//Erros em relação a leitura dos arquivos de configurações
+#define ERROR_PARSE_FAIL 125
+
 /*
  * Definições de paths
  */
@@ -94,10 +97,9 @@
  * Definições de arquivos
  */
 
-
+#define FILE_EXISTS 127
 #define OPEN_STREAM_FILE_SUCCESSFULLY 117
 #define COPY_FILE_SUCCESSFULLY 121
 #define DECOMPRESS_SUCCESSFULLY 123
-
+#define PARSE_COMPLETE 126
 #endif	/* HTLP_DEFINES_HPP */
-
