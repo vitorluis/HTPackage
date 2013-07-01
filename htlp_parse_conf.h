@@ -35,5 +35,11 @@ int htlp_parse_conf_main(Package * package, Config * conf);
 
 int htlp_parse_conf_open_file(Config * conf, char * temp_dir);
 
-int htlp_parse_conf_parse(Package * package, Config * conf);
+int htlp_parse_conf_parse_information(Package * package, Config * conf);
+
+int htlp_parse_conf_parse_pre_install(Config * conf);
+
+int htlp_parse_conf_parse_install(Config * conf);
+
+int htlp_parse_conf_parse_post_install(Config * conf);
 #endif	/* HTLP_PARSE_CONF_H */

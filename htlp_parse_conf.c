@@ -43,7 +43,7 @@ int htlp_parse_conf_open_file(Config * conf, char * temp_dir) {
     return OPEN_STREAM_FILE_SUCCESSFULLY;
 }
 
-int htlp_parse_conf_parse(Package * package, Config* conf) {
+int htlp_parse_conf_parse_information(Package * package, Config* conf) {
     //Inicia o ponteiro
     config_init(&conf->config);
 
