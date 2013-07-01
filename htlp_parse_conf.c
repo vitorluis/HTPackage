@@ -26,25 +26,29 @@ int htlp_parse_conf_main(Package * package, Config * conf) {
      * Abre o arquivo de configuração
      */
     htlp_parse_conf_open_file(conf, package->_temp_dir);
-    
+
     return PARSE_COMPLETE;
 }
 
 int htlp_parse_conf_open_file(Config * conf, char * temp_dir) {
     //Faz a abertura do arquivo
     conf->_file = fopen(strcat(temp_dir, "htlp/package.conf"), "r");
-
+    
     //Verifica se o arquivo foi aberto com sucesso
     if (conf->_file == NULL)
         return ERROR_COULD_NOT_OPEN_STREAM_FILE;
 
     //Se chegar aqui, beleza, o arquivo foi aberto com sucesso
+
     return OPEN_STREAM_FILE_SUCCESSFULLY;
 }
 
 int htlp_parse_conf_parse(Package * package, Config* conf) {
     //Declaração das vars
     config_t config;
+
+    //Inicia o ponteiro
+    config_init(&config);
 
     //Abre o arquivo e faz a leitura
     if (!config_read(&config, conf->_file))
@@ -54,6 +58,6 @@ int htlp_parse_conf_parse(Package * package, Config* conf) {
     //Le o nome do pacote
     if (!config_lookup_string(&config, "information.name", &conf->_name_package))
         return ERROR_PARSE_FAIL;
-    
+
     return PARSE_COMPLETE;
 }

@@ -22,15 +22,15 @@
 #include <string.h>
 #include "htlp.h"
 #include "htlp_defines.h"
+#include "htlp_parse_conf.h"
+#include "htlp_structs.h"
+#include "htlp_typedefs.h"
 
 /*
  * 
  */
-int main(int argc, char** argv) {
-    if (argc > 1)
-        localInstallPackage(argv[1]);
-    else
-        showHelp();
+int main(int argc, char** argv) { 
+
     return 0;
 }
 
