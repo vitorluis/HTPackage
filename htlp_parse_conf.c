@@ -58,6 +58,11 @@ int htlp_parse_conf_parse(Package * package, Config* conf) {
     //Le o nome do pacote
     if (!config_lookup_string(&config, "information.name", &conf->_name_package))
         return ERROR_PARSE_FAIL;
-
+    
+    //Faz a leitura da versão
+    if (!config_lookup_string(&config, "information.version", &conf->_version))
+        return ERROR_PARSE_FAIL;
+    
+    
     return PARSE_COMPLETE;
 }
