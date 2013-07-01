@@ -93,3 +93,33 @@ int htlp_parse_conf_parse_information(Package * package, Config* conf) {
     //Caso de sucesso em todas as leituras, retorna OK
     return PARSE_COMPLETE;
 }
+
+int htlp_parse_conf_parse_pre_install(Config* conf) {
+
+    //Faz o parse do pré install
+    if (!config_lookup_string(&conf->config, "pre-install.exec", &conf->_pre_install))
+        return ERROR_PARSE_FAIL;
+    
+    //Retorna OK
+    return PARSE_COMPLETE;
+}
+
+int htlp_parse_conf_parse_install(Config* conf) {
+
+    //Faz o parse do pré install
+    if (!config_lookup_string(&conf->config, "install.exec", &conf->_install))
+        return ERROR_PARSE_FAIL;
+    
+    //Retorna OK
+    return PARSE_COMPLETE;
+}
+
+int htlp_parse_conf_parse_post_install(Config* conf) {
+
+    //Faz o parse do pré install
+    if (!config_lookup_string(&conf->config, "post-install.exec", &conf->_post_install))
+        return ERROR_PARSE_FAIL;
+    
+    //Retorna OK
+    return PARSE_COMPLETE;
+}
