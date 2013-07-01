@@ -20,16 +20,6 @@
 
 #include "htlp_parse_conf.h"
 
-int htlp_parse_conf_main(Package * package, Config * conf) {
-    /*
-     * Função principal para ler a configuração do pacote.
-     * Abre o arquivo de configuração
-     */
-    htlp_parse_conf_open_file(conf, package->_temp_dir);
-
-    return PARSE_COMPLETE;
-}
-
 int htlp_parse_conf_open_file(Config * conf, char * temp_dir) {
     //Faz a abertura do arquivo
     conf->_file = fopen(strcat(temp_dir, "htlp/package.conf"), "r");
@@ -99,7 +89,7 @@ int htlp_parse_conf_parse_pre_install(Config* conf) {
     //Faz o parse do pré install
     if (!config_lookup_string(&conf->config, "pre-install.exec", &conf->_pre_install))
         return ERROR_PARSE_FAIL;
-    
+
     //Retorna OK
     return PARSE_COMPLETE;
 }
@@ -109,7 +99,7 @@ int htlp_parse_conf_parse_install(Config* conf) {
     //Faz o parse do pré install
     if (!config_lookup_string(&conf->config, "install.exec", &conf->_install))
         return ERROR_PARSE_FAIL;
-    
+
     //Retorna OK
     return PARSE_COMPLETE;
 }
@@ -119,7 +109,44 @@ int htlp_parse_conf_parse_post_install(Config* conf) {
     //Faz o parse do pré install
     if (!config_lookup_string(&conf->config, "post-install.exec", &conf->_post_install))
         return ERROR_PARSE_FAIL;
-    
+
     //Retorna OK
+    return PARSE_COMPLETE;
+}
+int htlp_parse_conf_main(Package * package, Config * conf) {
+    /*
+     * Função principal para ler a configuração do pacote.
+     * Abre o arquivo de configuração
+     */
+    if (htlp_parse_conf_open_file(conf, package->_temp_dir) != OPEN_STREAM_FILE_SUCCESSFULLY)
+        return ERROR_COULD_NOT_OPEN_STREAM_FILE;
+
+    /*
+     * Faz a leitura das informações
+     */
+    if (htlp_parse_conf_parse_information(package, conf) != PARSE_COMPLETE)
+        return ERROR_PARSE_FAIL;
+    
+    /*
+     * Faz a leitura do pre-install
+     */
+    if (htlp_parse_conf_parse_install(conf) != PARSE_COMPLETE)
+        return ERROR_PARSE_FAIL;
+    
+    /*
+     * Faz a leitura do install
+     */
+    if (htlp_parse_conf_parse_install(conf) != PARSE_COMPLETE)
+        return ERROR_PARSE_FAIL;
+    
+    /*
+     * Faz a leitura do post-install
+     */
+    
+    if (htlp_parse_conf_parse_post_install(conf) != PARSE_COMPLETE)
+        return ERROR_PARSE_FAIL;
+    
+    
+    //Se tudo der certo, retorna OK    
     return PARSE_COMPLETE;
 }
