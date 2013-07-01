@@ -43,6 +43,12 @@ OBJECTFILES= \
 	${OBJECTDIR}/htlp_localinstall.o \
 	${OBJECTDIR}/main.o
 
+# Test Directory
+TESTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tests
+
+# Test Files
+TESTFILES= \
+	${TESTDIR}/TestFiles/f1
 
 # C Compiler Flags
 CFLAGS=
@@ -105,6 +111,119 @@ ${OBJECTDIR}/main.o: main.c
 
 # Subprojects
 .build-subprojects:
+
+# Build Test Targets
+.build-tests-conf: .build-conf ${TESTFILES}
+${TESTDIR}/TestFiles/f1: ${TESTDIR}/tests/parse_conf.o ${OBJECTFILES:%.o=%_nomain.o}
+	${MKDIR} -p ${TESTDIR}/TestFiles
+	${LINK.cc}   -o ${TESTDIR}/TestFiles/f1 $^ ${LDLIBSOPTIONS} 
+
+
+${TESTDIR}/tests/parse_conf.o: tests/parse_conf.c 
+	${MKDIR} -p ${TESTDIR}/tests
+	${RM} $@.d
+	$(COMPILE.c) -O2 -I. -I. -MMD -MP -MF $@.d -o ${TESTDIR}/tests/parse_conf.o tests/parse_conf.c
+
+
+${OBJECTDIR}/htlp_nomain.o: ${OBJECTDIR}/htlp.o htlp.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/htlp.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_nomain.o htlp.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/htlp.o ${OBJECTDIR}/htlp_nomain.o;\
+	fi
+
+${OBJECTDIR}/htlp_database_nomain.o: ${OBJECTDIR}/htlp_database.o htlp_database.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/htlp_database.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_database_nomain.o htlp_database.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/htlp_database.o ${OBJECTDIR}/htlp_database_nomain.o;\
+	fi
+
+${OBJECTDIR}/htlp_decompress_nomain.o: ${OBJECTDIR}/htlp_decompress.o htlp_decompress.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/htlp_decompress.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_decompress_nomain.o htlp_decompress.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/htlp_decompress.o ${OBJECTDIR}/htlp_decompress_nomain.o;\
+	fi
+
+${OBJECTDIR}/htlp_download_nomain.o: ${OBJECTDIR}/htlp_download.o htlp_download.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/htlp_download.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_download_nomain.o htlp_download.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/htlp_download.o ${OBJECTDIR}/htlp_download_nomain.o;\
+	fi
+
+${OBJECTDIR}/htlp_install_nomain.o: ${OBJECTDIR}/htlp_install.o htlp_install.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/htlp_install.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_install_nomain.o htlp_install.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/htlp_install.o ${OBJECTDIR}/htlp_install_nomain.o;\
+	fi
+
+${OBJECTDIR}/htlp_localinstall_nomain.o: ${OBJECTDIR}/htlp_localinstall.o htlp_localinstall.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/htlp_localinstall.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/htlp_localinstall_nomain.o htlp_localinstall.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/htlp_localinstall.o ${OBJECTDIR}/htlp_localinstall_nomain.o;\
+	fi
+
+${OBJECTDIR}/main_nomain.o: ${OBJECTDIR}/main.o main.c 
+	${MKDIR} -p ${OBJECTDIR}
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/main.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} $@.d;\
+	    $(COMPILE.cc) -O2 -Dmain=__nomain -MMD -MP -MF $@.d -o ${OBJECTDIR}/main_nomain.o main.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/main.o ${OBJECTDIR}/main_nomain.o;\
+	fi
+
+# Run Test Targets
+.test-conf:
+	@if [ "${TEST}" = "" ]; \
+	then  \
+	    ${TESTDIR}/TestFiles/f1 || true; \
+	else  \
+	    ./${TEST} || true; \
+	fi
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
