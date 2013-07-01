@@ -10,16 +10,19 @@
 #include <stdlib.h>
 #include <sqlite3.h>
 #include <ctype.h>
+#include <libconfig.h>
 #include <sys/types.h>
 
 struct config {
     FILE * _file;
+    config_t config;
     const char * _name_package;
     const char * _version;
     const char * _author;
     int _size;
-    const char * _requires;
+    const char * _depends;
     const char * _conflicts;
+    const char * _arch;
     const char * _pre_install;
     const char * _install;
     const char * _post_install;
@@ -33,7 +36,7 @@ struct package {
     char _cache_filename[100];
     char _temp_dir[100];
     int _package_size;
-    struct config _config;
+    struct config * _config;
 };
 
 struct data_connection {
