@@ -26,6 +26,25 @@ int htlp_localinstall_file_exists(char * filename) {
     return FILE_EXISTS;
 }
 
+int htlp_localinstall_decompress(Package* package) {
+
+    //ID da Thread
+    pthread_t thread;
+    void * status;
+
+
+    //Chama a função principal responsavel pela descompactação
+    pthread_create(&thread, NULL, htlp_decompress_main, (void*)package);
+    pthread_join(thread, &status);
+
+    if (*((int*) status) != DECOMPRESS_SUCCESSFULLY)
+        return ERROR_UNABLE_TO_DECOMPRESS;
+
+
+    //Se tudo der certo, manda um OK
+    return DECOMPRESS_SUCCESSFULLY;
+}
+
 int htlp_localinstall_main(Package* package) {
 
     /*
@@ -54,23 +73,4 @@ int htlp_localinstall_main(Package* package) {
      * Que se encontra no diretório htlp
      */
     return INSTALLATION_SUCCESSFULLY;
-}
-
-int htlp_localinstall_decompress(Package* package) {
-
-    //ID da Thread
-    pthread_t thread;
-    void * status;
-
-
-    //Chama a função principal responsavel pela descompactação
-    pthread_create(&thread, NULL, htlp_decompress_main, (void*)package);
-    pthread_join(thread, &status);
-
-    if (*((int*) status) != DECOMPRESS_SUCCESSFULLY)
-        return ERROR_UNABLE_TO_DECOMPRESS;
-
-
-    //Se tudo der certo, manda um OK
-    return DECOMPRESS_SUCCESSFULLY;
 }

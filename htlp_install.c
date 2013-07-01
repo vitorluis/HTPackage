@@ -18,17 +18,17 @@
  */
 #include "htlp_install.h"
 
-int htlp_install_main(Package* package) {
-    /*
-     * Procedimentos para a instalação do pacote
-     */
-    return 0;
-}
-
 int htlp_install_searchPackage() {
     return 0;
 }
 
 int htlp_install_resolvDependencies() {
+    return 0;
+}
+
+int htlp_install_main(Package* package) {
+    /*
+     * Procedimentos para a instalação do pacote
+     */
     return 0;
 }
