@@ -74,3 +74,13 @@ int htlp_localinstall_main(Package* package) {
      */
     return INSTALLATION_SUCCESSFULLY;
 }
+
+int htlp_localinstall_exec_pre_install(const char* script) {
+    /*
+     * Executa o script, que é o pre install
+     */
+    if (system(script) != 0)
+        return EXECUTE_PRE_INSTALL_FAILED;
+    
+    return EXECUTE_PRE_INSTALL_SUCCESSFULLY;
+}
