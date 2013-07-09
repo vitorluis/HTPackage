@@ -38,7 +38,11 @@ int htlp_localinstall_decompress(Package * package);
 
 int htlp_localinstall_parse_conf(char * filename);
 
-int htlp_localinstall_copy_files(char * output_dir);
+int htlp_localinstall_exec_pre_install(const char * script);
+
+int htlp_localinstall_exec_install(const char * script);
+
+int htlp_localinstall_exec_post_install(const char * script);
 
 #endif	/* HTLP_LOCALINSTALL_H */
 
